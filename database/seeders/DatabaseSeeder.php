@@ -16,6 +16,10 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(1)->create(['role' => 1]);
         User::factory(1)->create();
-
+        $this->call([
+            CategorySeeder::class,
+            ActivityTypeSeeder::class,
+            DisciplineSeeder::class,
+        ]);
     }
 }
