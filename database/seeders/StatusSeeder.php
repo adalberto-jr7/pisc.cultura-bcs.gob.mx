@@ -3,20 +3,23 @@
 namespace Database\Seeders;
 
 use App\Functions\FillTables;
-use App\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class CategorySeeder extends Seeder
+class StatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        //
+        $statuses = [
+            'En curso',
+            'Concluido',
+            'Pendiente',
+        ];
         $ft = new FillTables();
-        $ft->Fill(['Promocion', 'Formacion'], 'categories');
+        $ft->Fill($statuses, 'status');
     }
 }

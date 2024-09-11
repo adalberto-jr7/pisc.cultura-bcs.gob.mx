@@ -20,6 +20,9 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ActivityTypeSeeder::class,
             DisciplineSeeder::class,
+            TypeSeeder::class,
+            StatusSeeder::class,
+            FinnancingSourceSeeder::class,
         ]);
     }
 }

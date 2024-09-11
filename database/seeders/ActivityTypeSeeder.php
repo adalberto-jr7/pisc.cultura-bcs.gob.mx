@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Functions\FillTables;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -32,11 +33,7 @@ class ActivityTypeSeeder extends Seeder
             'Programas Culturales de Fiestas y Ferias',
             'Otros',
         ];
-        foreach($activity_types as $at)
-        {
-            DB::table('activity_types')->insert([
-                'name' => $at
-            ]);
-        }
+        $ft = new FillTables();
+        $ft->Fill($activity_types, 'activity_types');
     }
 }

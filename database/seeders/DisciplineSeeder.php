@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Functions\FillTables;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -25,11 +26,7 @@ class DisciplineSeeder extends Seeder
             'Multidisciplinaria',
             'Otra',
         ];
-        foreach($disciplines as $d)
-        {
-            DB::table('disciplines')->insert([
-                'name' => $d
-            ]);
-        }
+        $ft = new FillTables();
+        $ft->Fill($disciplines, 'disciplines');
     }
 }
