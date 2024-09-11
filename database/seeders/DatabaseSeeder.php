@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             TypeSeeder::class,
             StatusSeeder::class,
             FinnancingSourceSeeder::class,
+            AreaSeeder::class,
         ]);
     }
 }
