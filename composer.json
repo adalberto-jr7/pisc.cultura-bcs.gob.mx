@@ -21,7 +21,7 @@
     },
     "autoload": {
         "files": [
-            "app/Functions/*.php"
+            "app/Functions/FillTables.php"
         ],
         "psr-4": {
             "App\\": "app/",
