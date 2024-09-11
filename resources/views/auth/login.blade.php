@@ -21,7 +21,7 @@
         
         <div class="col-md-8 d-flex justify-content-center mt-4" @style(['width: 850px'])>
             <div class="card" @style(['width: 500px'])>
-                <div class="card-header d-flex justify-content-center text-white" @style(['background-color: #9F2241'])>{{ __('Iniciar Sesion') }}</div>
+                <div class="card-header d-flex justify-content-center text-white" @style(['background-color: #9F2241'])>{{ __('Iniciar Sesión') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -31,7 +31,7 @@
                         <label for="email" class="col-md-4 col-form-label text-md-end"><i class="bi bi-person"></i></label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" placeholder="Ingresa tu Correo Electronico" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" placeholder="Ingresa tu Correo Electrónico" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
