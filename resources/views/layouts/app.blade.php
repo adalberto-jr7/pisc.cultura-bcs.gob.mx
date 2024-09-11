@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,14 +19,17 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
+
 <body @style(['background-color: #F5F5F5'])> <!-- ruta prueba fondo de imagen  @style(['background-color: #F5F5F5'])     @style(['background-image: url(assets/bcs-bg.jpg)', 'background-size: 100% auto', 'background-position: center top', 'background-repeat: no-repeat'])  -->
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm" @style(['background-color: #BE9655'])>
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}" @style(['color: #343131'])>
-                    {{ config('Proyectos Instituto Sudcaliforniano de Cultura', 'Proyectos Instituto Sudcaliforniano de Cultura') }}
+                <a class="navbar-brand fw-bold" href="{{ url('/') }}" @style(['color: #777'])>
+                    Proyectos Instituto Sudcaliforniano de Cultura
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -40,21 +44,17 @@
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <button type="submit" class="btn" @style(['background-color: #9F2241', 'height: 52px'])>
-                                        <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Iniciar Sesion') }}</a>
-                                    </button>
-                                </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
+                                        onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
@@ -75,4 +75,5 @@
         </main>
     </div>
 </body>
+
 </html>
