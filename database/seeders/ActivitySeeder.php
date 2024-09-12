@@ -7,14 +7,14 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ActivityTypeSeeder extends Seeder
+class ActivitySeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $activity_types = [
+        $activities= [
             'Concursos',
             'Convocatorias',
             'Premios artísticos y culturales',
@@ -34,6 +34,6 @@ class ActivityTypeSeeder extends Seeder
             'Otros',
         ];
         $ft = new FillTables();
-        $ft->Fill($activity_types, 'activity_types');
+        $ft->Fill($activities, 'activities');
     }
 }
