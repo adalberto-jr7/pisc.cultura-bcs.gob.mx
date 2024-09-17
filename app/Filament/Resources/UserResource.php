@@ -37,8 +37,8 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('email')
                     ->required()
                     ->email()
-                    ->label('Correo Electronico')
-                    ->placeholder('Ingresa el correo electronico'),
+                    ->label('Correo Electrónico')
+                    ->placeholder('Ingresa el correo electrónico'),
                 Forms\Components\TextInput::make('password')
                     ->required()
                     ->password()
@@ -47,17 +47,17 @@ class UserResource extends Resource
                     ->placeholder('Ingrese la contraseña'),
                 Forms\Components\TextInput::make('number_phone')
                     ->required()
-                    ->label('Numero de telefono')
+                    ->label('Número de teléfono')
                     ->tel()
-                    ->placeholder('Ingresa el numero de telefono'),
+                    ->placeholder('Ingresa el número de teléfono'),
                 Forms\Components\TextInput::make('position')
                     ->required()
-                    ->label('Posicion')
-                    ->placeholder('Ingrese la posicion'),
+                    ->label('Posición')
+                    ->placeholder('Ingrese la posición'),
                 Forms\Components\Select::make('area_id')
                     ->required()
-                    ->label('Area')
-                    ->placeholder(fn(Forms\Get $get): string => empty($get('area_id')) ? 'Primero Selecciona un area' : 'Selecciona una opción')
+                    ->label('Área')
+                    ->placeholder(fn(Forms\Get $get): string => empty($get('area_id')) ? 'Primero Selecciona un área' : 'Selecciona una opción')
                     ->options(Area::query()->pluck('name', 'id'))
             ]);
     }
