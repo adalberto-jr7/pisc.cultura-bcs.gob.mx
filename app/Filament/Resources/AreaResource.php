@@ -30,7 +30,7 @@ class AreaResource extends Resource
                 ->placeholder('Ingrese el nombre'),
                 Forms\Components\TextInput::make('code')
                 ->label('Código')
-                ->placeholder('Ingrese el codígo del area'),
+                ->placeholder('Ingrese el codígo del área'),
                 Forms\Components\TextArea::make('description')
                 ->label('Descripción')
                 ->columnSpan(2)
