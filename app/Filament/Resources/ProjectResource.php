@@ -27,7 +27,9 @@ class ProjectResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextArea::make('description')
+                    ->label('Descripción'),
+                Forms\Components\TimePicker::make('initial_month'),
             ]);
     }
 
@@ -35,7 +37,7 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('Descripción'),
             ])
             ->filters([
                 //

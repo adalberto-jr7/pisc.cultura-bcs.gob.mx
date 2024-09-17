@@ -23,6 +23,7 @@ class AdministradorPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
+            ->darkMode(false)
             ->brandName('Proyectos Instituto Sudcaliforniano de Cultura')
             ->default()
             ->id('administrador')
@@ -51,6 +52,7 @@ class AdministradorPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
+            ->viteTheme('resources/css/filament/administrador/theme.css')
             ->authMiddleware([
                 Authenticate::class,
             ]);
