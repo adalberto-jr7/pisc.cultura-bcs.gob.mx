@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\App\Widgets\MyArea;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -24,9 +25,12 @@ class AppPanelProvider extends PanelProvider
     {
         return $panel
             ->id('app')
+            ->darkMode(false)
             ->path('app')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => '#9F2241',
+                'secundary' => '#BE9655',
+                'tittle' => '#777777'
             ])
             ->discoverResources(in: app_path('Filament/App/Resources'), for: 'App\\Filament\\App\\Resources')
             ->discoverPages(in: app_path('Filament/App/Pages'), for: 'App\\Filament\\App\\Pages')
@@ -36,7 +40,7 @@ class AppPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/App/Widgets'), for: 'App\\Filament\\App\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                MyArea::class,
             ])
             ->middleware([
                 EncryptCookies::class,
