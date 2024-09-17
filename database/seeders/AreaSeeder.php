@@ -16,14 +16,14 @@ class AreaSeeder extends Seeder
     {
         $areas = [
             'Teatro de la Ciudad',
-            'Museo Regional de Antropologia e Historia de BCS',
+            'Museo Regional de Antropología e Historia de BCS',
             'Centro Cultural La Paz',
             'Museo de Arte de BCS',
             'Galería de Arte Carlos Olachea B.',
             'Casa de la Cultura del Estado',
             'Archivo Histórico Pablo L. Martinez',
             'Escuela de Música del Estado',
-            'Coordinación Tecnica',
+            'Coordinación Técnica',
             'Dirección de Control Interno ISC',
             'Coordinación Administrativa y Financiera',
             'Coordinación de Comunicación',
