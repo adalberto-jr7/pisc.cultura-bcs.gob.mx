@@ -29,12 +29,12 @@ class AreaResource extends Resource
                 ->label('Nombre')
                 ->placeholder('Ingrese el nombre'),
                 Forms\Components\TextInput::make('code')
-                ->label('Codigo')
+                ->label('Código')
                 ->placeholder('Ingrese el codígo del area'),
                 Forms\Components\TextArea::make('description')
                 ->label('Descripción')
                 ->columnSpan(2)
-                ->placeholder('Ingrese la descripcion del area'),
+                ->placeholder('Ingrese la descripción del área'),
             ]);
     }
 
