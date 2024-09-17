@@ -5,14 +5,6 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::redirect('/', '/app');
 
 Auth::routes(['register' => false]);
-
-Route::get('/admin/dashboard', function () {
-    if (Gate::allows('isAdmin')) {
-        return view('dashboard');
-    } else {
-        return "Not Authorized";
-    }
-})->middleware('auth');
