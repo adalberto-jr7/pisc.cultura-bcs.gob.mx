@@ -17,6 +17,6 @@ class CategorySeeder extends Seeder
     {
         //
         $ft = new FillTables();
+        $ft->Fill(['Promoción', 'Formación'], 'categories');
     }
 }
-$ft->Fill(['Promoción', 'Formación'], 'categories');
