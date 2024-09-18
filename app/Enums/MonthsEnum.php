@@ -5,18 +5,18 @@ namespace App\Enums;
 enum MonthsEnum: string
 {
 
-    case ENERO = 'enero';
-    case FEBRERO = 'febrero';
-    case MARZO = 'marzo';
-    case ABRIL = 'abril';
-    case MAYO = 'mayo';
-    case JUNIO = 'junio';
-    case JULIO = 'julio';
-    case AGOSTO = 'agosto';
-    case SEPTIEMBRE = 'septiembre';
-    case OCTUBRE = 'octubre';
-    case NOVIEMBRE = 'noviembre';
-    case DICIEMBRE = 'diciembre';
+    case ENERO = 'Enero';
+    case FEBRERO = 'Febrero';
+    case MARZO = 'Marzo';
+    case ABRIL = 'Abril';
+    case MAYO = 'Mayo';
+    case JUNIO = 'Junio';
+    case JULIO = 'Julio';
+    case AGOSTO = 'Agosto';
+    case SEPTIEMBRE = 'Septiembre';
+    case OCTUBRE = 'Octubre';
+    case NOVIEMBRE = 'Noviembre';
+    case DICIEMBRE = 'Diciembre';
 
     public static function toArray(): array
     {

@@ -2,16 +2,15 @@
 
 namespace App\Filament\App\Resources;
 
+use App\Enums\MonthsEnum;
 use App\Filament\App\Resources\ProjectResource\Pages;
-use App\Filament\App\Resources\ProjectResource\RelationManagers;
+use App\Models\Area;
 use App\Models\Project;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ProjectResource extends Resource
 {
@@ -27,7 +26,27 @@ class ProjectResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextArea::make('description')
+                    ->label('Descripción')
+                    ->columnSpan(2),
+                Forms\Components\TextInput::make('code')
+                    ->label('Código'),
+                Forms\Components\Select::make('area_id')
+                    ->required()
+                    ->label('Área')
+                    ->placeholder(fn(Forms\Get $get): string => empty($get('area_id')) ? 'Primero Selecciona un área' : 'Selecciona una opción')
+                    ->options(Area::query()->pluck('name', 'id')),
+                Forms\Components\Select::make('initial_month')
+                    ->label('Mes inicial')
+                    ->options(MonthsEnum::toArray()),
+                Forms\Components\Select::make('last_month')
+                    ->label('Mes final')
+                    ->options(MonthsEnum::toArray()),
+                Forms\Components\TextInput::make('year')
+                    ->label('Año')
+                    ->length(4)
+                    ->numeric(),
+
             ]);
     }
 
