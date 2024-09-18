@@ -35,8 +35,8 @@ class ActivityResource extends Resource
                     ->placeholder('Escriba el nombre de la actividad')
                     ->label('Nombre de la actividad'),
                 Forms\Components\Select::make('category_id')
-                    ->label('Cateogoria')
-                    ->placeholder(fn(Forms\Get $get): string => empty($get('category_id')) ? 'Primero Selecciona un categoria' : 'Selecciona una opción')
+                    ->label('Categoria')
+                    ->placeholder(fn(Forms\Get $get): string => empty($get('category_id')) ? 'Primero Selecciona una categoria' : 'Selecciona una opción')
                     ->options(Category::query()->pluck('name', 'id')),
                 Forms\Components\Textarea::make('activity_goal')
                     ->label('Metas de la actividad'),
@@ -75,7 +75,7 @@ class ActivityResource extends Resource
                     ->options(FinnancingSource::query()->pluck('name', 'id')),
                 //Personas
 
-                Section::make('Poblacion atendida')
+                Section::make('Población atendida')
                     ->columns(1)
                     ->schema([
                         Forms\Components\TextInput::make('total')
@@ -100,7 +100,7 @@ class ActivityResource extends Resource
                                 Forms\Components\TextInput::make('children_boys')
                                     ->label('Masculino'),
                             ]),
-                        Fieldset::make('Jovenes')
+                        Fieldset::make('Jóvenes')
                             ->schema([
                                 Forms\Components\TextInput::make('youth_women')
                                     ->label('Femenino'),
@@ -131,11 +131,11 @@ class ActivityResource extends Resource
                         Forms\Components\TextInput::make('social_women')
                             ->label('Mujeres'),
                         Forms\Components\TextInput::make('social_childrens')
-                            ->label('Ninos, ninas y jovenes'),
+                            ->label('Niños, niñas y jóvenes'),
                         Forms\Components\TextInput::make('social_seniors')
                             ->label('Adultos mayores'),
                         Forms\Components\TextInput::make('social_indigenous')
-                            ->label('Indigenas'),
+                            ->label('Indígenas'),
                         Forms\Components\TextInput::make('social_disabled')
                             ->label('Discapacitados'),
                         Forms\Components\TextInput::make('social_migrants')
@@ -143,7 +143,7 @@ class ActivityResource extends Resource
                         Forms\Components\TextInput::make('social_afrodescendants')
                             ->label('Afrodescendientes'),
                         Forms\Components\TextInput::make('social_incarcerated')
-                            ->label('En reclusion'),
+                            ->label('En reclusión'),
                         Forms\Components\TextInput::make('social_lgbtttiq')
                             ->label('LGBTQ+'),
 
