@@ -24,7 +24,7 @@
 <body @style(['background-color: #F5F5F5'])> <!-- ruta prueba fondo de imagen  @style(['background-color: #F5F5F5'])     @style(['background-image: url(assets/bcs-bg.jpg)', 'background-size: 100% auto', 'background-position: center top', 'background-repeat: no-repeat'])  -->
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm" @style(['background-color: #BE9655'])>
-            <div class="container">
+            <div class="container d-flex justify-content-center px-5">
                 <a class="navbar-brand fw-bold" href="{{ url('/') }}" @style(['color: #777777'])>
                     Proyectos Instituto Sudcaliforniano de Cultura
                 </a>
