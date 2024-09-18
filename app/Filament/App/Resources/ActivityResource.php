@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Discipline;
 use App\Models\FinnancingSource;
 use Filament\Forms;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -33,25 +34,35 @@ class ActivityResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('activity_name')
                     ->placeholder('Escriba el nombre de la actividad')
+                    ->required()
                     ->label('Nombre de la actividad'),
                 Forms\Components\Select::make('category_id')
                     ->label('Cateogoria')
+                    ->required()
                     ->placeholder(fn(Forms\Get $get): string => empty($get('category_id')) ? 'Primero Selecciona un categoria' : 'Selecciona una opción')
                     ->options(Category::query()->pluck('name', 'id')),
                 Forms\Components\Textarea::make('activity_goal')
+                    ->placeholder('Escriba las metas de las actividad')
+                    ->required()
                     ->label('Metas de la actividad'),
                 Forms\Components\Textarea::make('description')
+                    ->placeholder('Escriba la descripción')
+                    ->required()
                     ->label('Descripción'),
                 Forms\Components\Select::make('activity_type_id')
                     ->label('Tipo de actividad')
+                    ->required()
                     ->placeholder(fn(Forms\Get $get): string => empty($get('activity_type_id')) ? 'Primero Selecciona un tipo de actividad' : 'Selecciona una opción')
                     ->options(ActivityType::query()->pluck('name', 'id')),
                 Forms\Components\Select::make('discipline_id')
                     ->label('Tipo de disciplina')
+                    ->required()
                     ->placeholder(fn(Forms\Get $get): string => empty($get('discipline_id')) ? 'Primero Selecciona un tipo de disciplina' : 'Selecciona una opción')
                     ->options(Discipline::query()->pluck('name', 'id')),
                 Forms\Components\TextInput::make('author_name')
                     ->label('Nombre del autor')
+                    ->required()
+                    ->placeholder('Escribe el nombre del autor')
                     ->columnSpan(2),
                 Forms\Components\DatePicker::make('initial_date')
                     ->label('Fecha inicial')
@@ -61,32 +72,41 @@ class ActivityResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('name_space_held')
                     ->label('Nombre del lugar donde se realizó')
+                    ->required()
+                    ->placeholder('Escriba el nombre del lugar donde se realizó')
                     ->columnSpan(2),
                 Forms\Components\Select::make('locality')
                     ->label('Localidad')
-                    ->options(StatesEnum::toArray()),
+                    ->required()
+                    ->options(StatesEnum::class),
                 Forms\Components\Select::make('municipality')
                     ->label('Municipio')
-                    ->options(StatesEnum::toArray()),
-                Forms\Components\Select::make('finnancing_source_id')
-                    ->label('Fuente de financiamiento')
-                    ->columnSpanFull()
-                    ->placeholder(fn(Forms\Get $get): string => empty($get('finnancing_source_id')) ? 'Primero Selecciona un tipo de financiamiento' : 'Selecciona una opción')
-                    ->options(FinnancingSource::query()->pluck('name', 'id')),
+                    ->required()
+                    ->options(StatesEnum::class),
                 //Personas
 
                 Section::make('Poblacion atendida')
-                    ->columns(1)
+                    ->collapsible()
+                    ->columns(2)
                     ->schema([
                         Forms\Components\TextInput::make('total')
+                            ->columnSpanFull()
+                            ->placeholder('Escriba la cantidad de personas total')
+                            ->required()
+                            ->integer()
                             ->label('Total de personas'),
-
                         Fieldset::make('Personas')
                             ->schema([
-                                Forms\Components\TextInput::make('total_women')
+                                Forms\Components\TextInput::make('women_total')
+                                    ->placeholder('Escriba la cantidad de personas femeninas')
+                                    ->required()
+                                    ->integer()
                                     ->label('Total de mujeres')
                                     ->columnSpan(2),
                                 Forms\Components\TextInput::make('men_total')
+                                    ->placeholder('Escriba la cantidad de personas masculinas')
+                                    ->integer()
+                                    ->required()
                                     ->label('Total de hombres')
                                     ->columnSpan(2),
 
@@ -125,29 +145,44 @@ class ActivityResource extends Resource
                     ]),
 
                 Section::make('Grupo social')
+                    ->collapsed()
                     ->description('De ser el caso, grupo social al que va dirigido.')
                     ->columns(3)
                     ->schema([
                         Forms\Components\TextInput::make('social_women')
+                            ->placeholder('Escriba la cantidad de mujeres')
                             ->label('Mujeres'),
                         Forms\Components\TextInput::make('social_childrens')
+                            ->placeholder('Escriba la cantidad de ninas, ninos y jovenes')
                             ->label('Ninos, ninas y jovenes'),
                         Forms\Components\TextInput::make('social_seniors')
+                            ->placeholder('Escriba la cantidad de adultos mayores')
                             ->label('Adultos mayores'),
                         Forms\Components\TextInput::make('social_indigenous')
+                            ->placeholder('Escriba la cantidad de indigenas')
                             ->label('Indigenas'),
                         Forms\Components\TextInput::make('social_disabled')
+                            ->placeholder('Escriba la cantidad de discapacitados')
                             ->label('Discapacitados'),
                         Forms\Components\TextInput::make('social_migrants')
+                            ->placeholder('Escriba la cantidad de migrantes')
                             ->label('Migrantes'),
                         Forms\Components\TextInput::make('social_afrodescendants')
+                            ->placeholder('Escriba la cantidad de afrodescendientes')
                             ->label('Afrodescendientes'),
                         Forms\Components\TextInput::make('social_incarcerated')
+                            ->placeholder('Escriba la cantidad de personas en reclusion')
                             ->label('En reclusion'),
                         Forms\Components\TextInput::make('social_lgbtttiq')
+                            ->placeholder('Escriba la cantidad de personas lgbt+')
                             ->label('LGBTQ+'),
 
-                    ])
+                    ]),
+                Forms\Components\Select::make('finnancing_source_id')
+                    ->label('Fuente de financiamiento')
+                    ->columnSpanFull()
+                    ->placeholder(fn(Forms\Get $get): string => empty($get('finnancing_source_id')) ? 'Primero Selecciona un tipo de financiamiento' : 'Selecciona una opción')
+                    ->options(FinnancingSource::query()->pluck('name', 'id')),
 
             ]);
     }
@@ -156,7 +191,15 @@ class ActivityResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('activity_name')
+                    ->limit(25)
+                    ->label('Nombre de la actividad'),
+                Tables\Columns\TextColumn::make('category.name')
+                    ->label('Categoria'),
+                Tables\Columns\TextColumn::make('activityType.name')
+                    ->label('Tipo de actividad'),
+                Tables\Columns\TextColumn::make('discipline.name')
+                    ->label('Disciplina'),
             ])
             ->filters([
                 //

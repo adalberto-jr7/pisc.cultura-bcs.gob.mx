@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreignIdFor(ActivityType::class);
             $table->foreignIdFor(Discipline::class);
             $table->string('author_name');
-            $table->date('inital_date');
+            $table->date('initial_date');
             $table->date('end_date');
             $table->string('name_space_held');
             $table->string('locality');
@@ -41,7 +41,7 @@ return new class extends Migration
             $table->integer('adult_men');
             $table->integer('senior_women');
             $table->integer('senior_men');
-            $table->integer('social_women');
+            $table->integer('social_women')->nullable();
             $table->integer('social_childrens')->nullable();
             $table->integer('social_seniors')->nullable();
             $table->integer('social_indigenous')->nullable();
@@ -50,7 +50,7 @@ return new class extends Migration
             $table->integer('social_afrodescendants')->nullable();
             $table->integer('social_incarcerated')->nullable();
             $table->integer('social_lgbtttiq')->nullable();
-            $table->foreignIdFor(FinnancingSource::class);
+            $table->foreignIdFor(FinnancingSource::class)->nullable();
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Activity extends Model
 {
@@ -17,7 +18,7 @@ class Activity extends Model
         'activity_type_id',
         'discipline_id',
         'author_name',
-        'inital_date',
+        'initial_date',
         'end_date',
         'name_space_held',
         'locality',
@@ -42,5 +43,21 @@ class Activity extends Model
         'social_afrodescendants',
         'social_incarcerated',
         'social_lgbtttiq',
+        'finnancing_source_id'
     ];
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function activityType(): BelongsTo
+    {
+        return $this->belongsTo(ActivityType::class);
+    }
+
+    public function discipline(): BelongsTo
+    {
+        return $this->belongsTo(Discipline::class);
+    }
 }
