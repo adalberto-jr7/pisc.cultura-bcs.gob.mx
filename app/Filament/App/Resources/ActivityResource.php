@@ -75,15 +75,24 @@ class ActivityResource extends Resource
                     ->options(FinnancingSource::query()->pluck('name', 'id')),
                 //Personas
 
-                Fieldset::make('Poblacion atendida')
+                Section::make('Poblacion atendida')
+                    ->columns(1)
                     ->schema([
                         Forms\Components\TextInput::make('total')
-                            ->label('Total de personas')
-                            ->columnSpan(2),
-                        Forms\Components\TextInput::make('total_women')
-                            ->label('Total de mujeres'),
-                        Forms\Components\TextInput::make('men_total')
-                            ->label('Total de hombres'),
+                            ->label('Total de personas'),
+
+                        Fieldset::make('Personas')
+                            ->schema([
+                                Forms\Components\TextInput::make('total_women')
+                                    ->label('Total de mujeres')
+                                    ->columnSpan(2),
+                                Forms\Components\TextInput::make('men_total')
+                                    ->label('Total de hombres')
+                                    ->columnSpan(2),
+
+                            ]),
+
+
                         Fieldset::make('Niñas y niños')
                             ->schema([
                                 Forms\Components\TextInput::make('children_girls')
@@ -112,8 +121,12 @@ class ActivityResource extends Resource
                                 Forms\Components\TextInput::make('senior_men')
                                     ->label('Masculino'),
                             ])
+
                     ]),
-                Fieldset::make('Grupo social')
+
+                Section::make('Grupo social')
+                    ->description('De ser el caso, grupo social al que va dirigido.')
+                    ->columns(3)
                     ->schema([
                         Forms\Components\TextInput::make('social_women')
                             ->label('Mujeres'),
@@ -133,7 +146,9 @@ class ActivityResource extends Resource
                             ->label('En reclusion'),
                         Forms\Components\TextInput::make('social_lgbtttiq')
                             ->label('LGBTQ+'),
+
                     ])
+
             ]);
     }
 
