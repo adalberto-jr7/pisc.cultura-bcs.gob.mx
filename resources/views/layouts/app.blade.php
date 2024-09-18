@@ -21,7 +21,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
 </head>
 
-<body @style(['background-color: #F5F5F5'])> <!-- ruta prueba fondo de imagen  @style(['background-color: #F5F5F5'])     @style(['background-image: url(assets/bcs-bg.jpg)', 'background-size: 100% auto', 'background-position: center top', 'background-repeat: no-repeat'])  -->
+<body @style(['background-color: #F5F5F5'])> 
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm" @style(['background-color: #9F2241'])>
             <div class="container d-flex justify-content-center px-5">
