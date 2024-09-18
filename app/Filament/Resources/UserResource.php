@@ -73,7 +73,7 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('email')
                     ->label('Email'),
                 Tables\Columns\TextColumn::make('number_phone')
-                    ->label('Número de telefono'),
+                    ->label('Número de télefono'),
                 Tables\Columns\TextColumn::make('position')
                     ->label('Posición'),
             ])
