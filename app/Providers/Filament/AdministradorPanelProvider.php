@@ -29,8 +29,12 @@ class AdministradorPanelProvider extends PanelProvider
             ->id('administrador')
             ->path('administrador')
             ->login()
+            ->navigationGroups([
+                'Reportes',
+                'Valores'
+            ])
             ->colors([
-                'primary' => '#9F2241', 
+                'primary' => '#9F2241',
                 'secundary' => '#BE9655',
                 'tittle' => '#777777'
             ])
