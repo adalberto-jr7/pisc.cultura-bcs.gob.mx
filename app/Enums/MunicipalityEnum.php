@@ -4,7 +4,7 @@ namespace App\Enums;
 
 use Filament\Support\Contracts\HasLabel;
 
-enum StatesEnum: string implements HasLabel
+enum MunicipalityEnum: string implements HasLabel
 {
     case LA_PAZ = 'LA PAZ';
     case COMONDU = 'COMONDÚ';
@@ -15,7 +15,7 @@ enum StatesEnum: string implements HasLabel
     public function getLabel(): ?string
     {
         return match ($this) {
-            self::LA_PAZ => "La Paz",
+            self::LA_PAZ => "LA PAZ",
             self::COMONDU => "COMONDÚ",
             self::LOS_CABOS => "LOS CABOS",
             self::MULEGE => "MULEGÉ",
@@ -25,6 +25,6 @@ enum StatesEnum: string implements HasLabel
 
     public static function toArray(): array
     {
-        return array_column(StatesEnum::cases(), 'value');
+        return array_column(MunicipalityEnum::cases(), 'value');
     }
 }

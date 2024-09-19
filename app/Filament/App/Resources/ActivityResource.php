@@ -2,7 +2,7 @@
 
 namespace App\Filament\App\Resources;
 
-use App\Enums\StatesEnum;
+use App\Enums\MunicipalityEnum;
 use App\Filament\App\Resources\ActivityResource\Pages;
 use App\Models\Activity;
 use App\Models\ActivityType;
@@ -80,11 +80,11 @@ class ActivityResource extends Resource
                 Forms\Components\Select::make('locality')
                     ->label('Localidad')
                     ->required()
-                    ->options(StatesEnum::class),
+                    ->options(MunicipalityEnum::class),
                 Forms\Components\Select::make('municipality')
                     ->label('Municipio')
                     ->required()
-                    ->options(StatesEnum::class),
+                    ->options(MunicipalityEnum::class),
                 //Personas
 
                 Section::make('Población atendida')
