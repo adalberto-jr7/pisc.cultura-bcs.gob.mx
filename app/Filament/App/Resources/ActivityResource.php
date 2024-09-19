@@ -37,14 +37,8 @@ class ActivityResource extends Resource
                     ->required()
                     ->label('Nombre de la actividad'),
                 Forms\Components\Select::make('category_id')
-<<<<<<< HEAD
-                    ->label('Cateogoria')
-                    ->required()
-                    ->placeholder(fn(Forms\Get $get): string => empty($get('category_id')) ? 'Primero Selecciona un categoria' : 'Selecciona una opción')
-=======
                     ->label('Categoria')
                     ->placeholder(fn(Forms\Get $get): string => empty($get('category_id')) ? 'Primero Selecciona una categoria' : 'Selecciona una opción')
->>>>>>> 0c49eb72bb200a1077478fd7dca19041495d34d0
                     ->options(Category::query()->pluck('name', 'id')),
                 Forms\Components\Textarea::make('activity_goal')
                     ->placeholder('Escriba las metas de las actividad')
@@ -90,14 +84,8 @@ class ActivityResource extends Resource
                     ->options(StatesEnum::class),
                 //Personas
 
-<<<<<<< HEAD
-                Section::make('Poblacion atendida')
-                    ->collapsible()
-                    ->columns(2)
-=======
                 Section::make('Población atendida')
                     ->columns(1)
->>>>>>> 0c49eb72bb200a1077478fd7dca19041495d34d0
                     ->schema([
                         Forms\Components\TextInput::make('total')
                             ->columnSpanFull()
@@ -163,22 +151,12 @@ class ActivityResource extends Resource
                             ->placeholder('Escriba la cantidad de mujeres')
                             ->label('Mujeres'),
                         Forms\Components\TextInput::make('social_childrens')
-<<<<<<< HEAD
-                            ->placeholder('Escriba la cantidad de ninas, ninos y jovenes')
-                            ->label('Ninos, ninas y jovenes'),
-=======
                             ->label('Niños, niñas y jóvenes'),
->>>>>>> 0c49eb72bb200a1077478fd7dca19041495d34d0
                         Forms\Components\TextInput::make('social_seniors')
                             ->placeholder('Escriba la cantidad de adultos mayores')
                             ->label('Adultos mayores'),
                         Forms\Components\TextInput::make('social_indigenous')
-<<<<<<< HEAD
-                            ->placeholder('Escriba la cantidad de indigenas')
-                            ->label('Indigenas'),
-=======
                             ->label('Indígenas'),
->>>>>>> 0c49eb72bb200a1077478fd7dca19041495d34d0
                         Forms\Components\TextInput::make('social_disabled')
                             ->placeholder('Escriba la cantidad de discapacitados')
                             ->label('Discapacitados'),
@@ -189,12 +167,7 @@ class ActivityResource extends Resource
                             ->placeholder('Escriba la cantidad de afrodescendientes')
                             ->label('Afrodescendientes'),
                         Forms\Components\TextInput::make('social_incarcerated')
-<<<<<<< HEAD
-                            ->placeholder('Escriba la cantidad de personas en reclusion')
-                            ->label('En reclusion'),
-=======
                             ->label('En reclusión'),
->>>>>>> 0c49eb72bb200a1077478fd7dca19041495d34d0
                         Forms\Components\TextInput::make('social_lgbtttiq')
                             ->placeholder('Escriba la cantidad de personas lgbt+')
                             ->label('LGBTQ+'),
