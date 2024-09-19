@@ -2,6 +2,7 @@
 
 use App\Enums\StatesEnum;
 use App\Models\ActivityType;
+use App\Models\Area;
 use App\Models\Category;
 use App\Models\Discipline;
 use App\Models\FinnancingSource;
@@ -51,6 +52,7 @@ return new class extends Migration
             $table->integer('social_incarcerated')->nullable();
             $table->integer('social_lgbtttiq')->nullable();
             $table->foreignIdFor(FinnancingSource::class)->nullable();
+            $table->foreignIdFor(Area::class);
             $table->timestamps();
         });
     }

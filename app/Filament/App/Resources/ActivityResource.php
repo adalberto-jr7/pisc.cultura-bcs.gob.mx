@@ -17,6 +17,9 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Section;
+use Filament\Tables\Filters\QueryBuilder;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 
 class ActivityResource extends Resource
 {
@@ -179,6 +182,8 @@ class ActivityResource extends Resource
                     ->placeholder(fn(Forms\Get $get): string => empty($get('finnancing_source_id')) ? 'Primero Selecciona un tipo de financiamiento' : 'Selecciona una opción')
                     ->options(FinnancingSource::query()->pluck('name', 'id')),
 
+                Forms\Components\Hidden::make('area_id')
+                    ->default((int) Auth::user()->area_id),
             ]);
     }
 
@@ -214,6 +219,11 @@ class ActivityResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->where('area_id', Auth::user()->area_id);
     }
 
     public static function getPages(): array

@@ -43,7 +43,8 @@ class Activity extends Model
         'social_afrodescendants',
         'social_incarcerated',
         'social_lgbtttiq',
-        'finnancing_source_id'
+        'finnancing_source_id',
+        'area_id'
     ];
 
     public function category(): BelongsTo
@@ -59,5 +60,10 @@ class Activity extends Model
     public function discipline(): BelongsTo
     {
         return $this->belongsTo(Discipline::class);
+    }
+
+    public function area(): BelongsTo
+    {
+        return $this->belongsTo(Area::class);
     }
 }
