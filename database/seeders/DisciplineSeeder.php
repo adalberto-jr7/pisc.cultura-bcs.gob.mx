@@ -16,7 +16,6 @@ class DisciplineSeeder extends Seeder
     {
         $disciplines = [
             'Artes visuales',
-            'Artes visuales',
             'Culturas populares',
             'Danza',
             'Literatura',
