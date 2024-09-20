@@ -19,7 +19,7 @@ class ActivityTypesResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $label = 'Tipos de actividades';
+    protected static ?string $label = 'Tipos De Actividades';
 
     protected static ?string $navigationGroup = 'Valores';
 

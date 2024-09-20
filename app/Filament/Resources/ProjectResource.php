@@ -32,17 +32,21 @@ class ProjectResource extends Resource
             ->schema([
                 Forms\Components\TextArea::make('description')
                     ->columnSpan(2)
-                    ->placeholder('Escriba la descripcion de el proyecto')
+                    ->placeholder('Escriba la descripción de el proyecto')
                     ->label('Descripción'),
                 Forms\Components\Select::make('initial_month')
+                    ->placeholder('Seleccione una opción')
                     ->label('Mes inicial')
                     ->searchable()
                     ->options(MonthsEnum::class),
                 Forms\Components\Select::make('last_month')
+                    ->placeholder('Seleccione una opción')
                     ->label('Mes final')
                     ->searchable()
                     ->options(MonthsEnum::class),
                 Forms\Components\Select::make('area_id')
+                    ->placeholder('Seleccione un área')
+                    ->label('Área')
                     ->options(Area::query()->pluck('name', 'id'))
             ])
             ->columns(2);
