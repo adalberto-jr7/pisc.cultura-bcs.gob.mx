@@ -73,8 +73,8 @@ class UserResource extends Resource
                     ->label('Usuario')
                     ->placeholder('Ingrese el nombre de usuario'),
                 Tables\Columns\TextColumn::make('email')
-                    ->label('Email')
-                    ->placeholder('Ingrese el email'),
+                    ->label('Correo electrónico')
+                    ->placeholder('Ingrese el correo electrónico'),
                 Tables\Columns\TextColumn::make('number_phone')
                     ->label('Número de teléfono')
                     ->placeholder('Ingrese el número de teléfono'),
