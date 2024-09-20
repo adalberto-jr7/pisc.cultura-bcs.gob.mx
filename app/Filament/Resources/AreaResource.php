@@ -29,7 +29,7 @@ class AreaResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                 ->label('Nombre')
-                ->placeholder('Ingrese el nombre'),
+                ->placeholder('Ingrese el nombre del área'),
                 Forms\Components\TextInput::make('code')
                 ->label('Código')
                 ->placeholder('Ingrese el código del área'),

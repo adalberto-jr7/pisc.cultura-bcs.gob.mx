@@ -29,7 +29,7 @@ class DisciplineResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                 ->name('Nombre')
-                ->placeholder('Ingrese el nombre')
+                ->placeholder('Ingrese el nombre de la disciplina')
             ]);
     }
 
