@@ -32,7 +32,7 @@ class ProjectResource extends Resource
             ->schema([
                 Forms\Components\TextArea::make('description')
                     ->columnSpan(2)
-                    ->placeholder('Escriba la descripcion de el proyecto')
+                    ->placeholder('Escriba la descripción de el proyecto')
                     ->label('Descripción'),
                 Forms\Components\Select::make('initial_month')
                     ->label('Mes inicial')
