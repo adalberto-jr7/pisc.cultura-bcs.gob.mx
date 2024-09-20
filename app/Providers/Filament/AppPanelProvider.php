@@ -3,19 +3,16 @@
 namespace App\Providers\Filament;
 
 use App\Filament\App\Resources\ActivityResource;
-use App\Filament\App\Widgets\MyArea;
-use App\Filament\Resources\UserResource;
+use App\Filament\App\Resources\ReportResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Filament\Navigation\MenuItem;
 use Filament\Navigation\NavigationBuilder;
 use Filament\Navigation\NavigationItem;
 use Filament\Pages;
 use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
-use Filament\Support\Colors\Color;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -42,6 +39,7 @@ class AppPanelProvider extends PanelProvider
                         ->isActiveWhen(fn(): bool => request()->routeIs('filament.admin.pages.dashboard'))
                         ->url(fn(): string => Dashboard::getUrl()),
                     ...ActivityResource::getNavigationItems(),
+                    ...ReportResource::getNavigationItems(),
                     NavigationItem::make('Panel de control')
                         ->url(fn(): string => route('filament.administrador.pages.dashboard'))
                         ->visible(Auth::user()->isAdmin())

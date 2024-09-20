@@ -1,6 +1,7 @@
 <?php
 
-use App\Enums\StatesEnum;
+use App\Enums\MonthsEnum;
+use App\Enums\MunicipalityEnum;
 use App\Models\ActivityType;
 use App\Models\Area;
 use App\Models\Category;
@@ -30,7 +31,7 @@ return new class extends Migration
             $table->date('end_date');
             $table->string('name_space_held');
             $table->string('locality');
-            $table->enum('municipality', StatesEnum::toArray());
+            $table->enum('municipality', MunicipalityEnum::toArray());
             $table->integer('total');
             $table->integer('women_total');
             $table->integer('men_total');

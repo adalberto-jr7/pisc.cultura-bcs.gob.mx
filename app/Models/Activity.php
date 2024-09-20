@@ -66,4 +66,10 @@ class Activity extends Model
     {
         return $this->belongsTo(Area::class);
     }
+
+    public function reports()
+    {
+        return $this->belongsToMany(Report::class, 'report_activity')
+            ->withTimestamps();
+    }
 }
