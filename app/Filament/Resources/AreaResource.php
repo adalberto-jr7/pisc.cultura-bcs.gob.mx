@@ -21,7 +21,7 @@ class AreaResource extends Resource
 
     protected static ?string $navigationGroup = 'Valores';
 
-    protected static ?string $label = 'Áreas';
+    protected static ?string $label = 'Área';
 
     public static function form(Form $form): Form
     {
