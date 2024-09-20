@@ -21,6 +21,8 @@ class AreaResource extends Resource
 
     protected static ?string $navigationGroup = 'Valores';
 
+    protected static ?string $label = 'Áreas';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -42,9 +44,12 @@ class AreaResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('description'),
-                Tables\Columns\TextColumn::make('code'),
+                Tables\Columns\TextColumn::make('name')
+                ->label('Nombre'),
+                Tables\Columns\TextColumn::make('description')
+                ->label('Descripción'),
+                Tables\Columns\TextColumn::make('code')
+                ->label('Código'),
             ])
             ->filters([
                 //
