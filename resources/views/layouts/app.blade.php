@@ -23,9 +23,9 @@
 
 <body @style(['background-color: #F5F5F5'])> 
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm" @style(['background-color: #BE9655'])>
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" @style(['background-color: #9F2241'])>
             <div class="container">
-                <a class="navbar-brand fw-bold" href="{{ url('/') }}" @style(['color: #777'])>
+                <a class="navbar-brand fw-bold container d-flex justify-content-center ps-5" href="{{ url('/') }}" @style(['color: #F5F5F5'])>
                     Proyectos Instituto Sudcaliforniano de Cultura
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
