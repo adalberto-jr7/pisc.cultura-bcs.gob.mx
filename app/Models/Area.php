@@ -16,8 +16,8 @@ class Area extends Model
         'code',
     ];
 
-    public function projects(): HasMany
+    public function activities(): HasMany
     {
-        return $this->hasMany(Project::class);
+        return $this->hasMany(Activity::class, 'area_id', 'area_id');
     }
 }

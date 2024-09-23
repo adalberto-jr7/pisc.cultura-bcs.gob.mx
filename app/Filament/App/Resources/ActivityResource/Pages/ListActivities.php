@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\ActivityResource\Pages;
+namespace App\Filament\App\Resources\ActivityResource\Pages;
 
-use App\Filament\Resources\ActivityResource;
+use App\Filament\App\Resources\ActivityResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -13,8 +13,7 @@ class ListActivities extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make()
-                ->label('Crear actividad'),
+            Actions\CreateAction::make(),
         ];
     }
 }

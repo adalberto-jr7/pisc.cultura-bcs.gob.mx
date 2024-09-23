@@ -12,7 +12,7 @@
                     <img src="{{ asset('assets/logo-1.jpg') }}" @style(['width: 449px'])>
                 </div>
                 <div class="col-2 mb-2">
-                    <img src="{{ asset('assets/ISC30N24.jpg') }}" @style(['width: 90px'])>
+                    <img src="{{ asset('assets/ISC30N24.jpg') }}" @style(['width: 78px'])>
                 </div>
             </div>
         </div>

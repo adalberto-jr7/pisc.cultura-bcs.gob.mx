@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Activity;
+use App\Models\Report;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,9 +13,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('activities', function (Blueprint $table) {
+        Schema::create('report_activity', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignIdFor(Report::class);
+            $table->foreignIdFor(Activity::class);
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('activity_type');
+        Schema::dropIfExists('report_activity');
     }
 };

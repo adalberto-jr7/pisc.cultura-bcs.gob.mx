@@ -22,7 +22,7 @@ class TypeSeeder extends Seeder
             'Digitalización y conservación de archivos y acervos históricos, artísticos y culturales',
             'Equipamiento de espacios culturales y/o grupos artísticos',
             'Murales',
-            'Desarrollo de herramientas tecnológicas (pag. Web y plataformas que brinden servicios culturales)',
+            'Desarrollo de herramientas tecnológicas (pág. Web y plataformas que brinden servicios culturales)',
             'Ediciones y publicaciones',
             'Otros',
         ];

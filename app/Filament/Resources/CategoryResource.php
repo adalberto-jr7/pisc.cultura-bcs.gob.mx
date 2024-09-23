@@ -29,7 +29,7 @@ class CategoryResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                 ->label('Nombre')
-                ->placeholder('Ingrese el nombre'),
+                ->placeholder('Ingrese el nombre de la categoria'),
             ]);
     }
 

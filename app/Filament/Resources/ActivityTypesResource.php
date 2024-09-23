@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ActivityResource\Pages;
-use App\Filament\Resources\ActivityResource\RelationManagers;
-use App\Models\Activity;
+use App\Filament\Resources\ActivityTypesResource\Pages;
+use App\Filament\Resources\ActivityTypesResource\RelationManagers;
+use App\Models\ActivityType;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,25 +13,21 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ActivityResource extends Resource
+class ActivityTypesResource extends Resource
 {
-    protected static ?string $model = Activity::class;
+    protected static ?string $model = ActivityType::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-cube';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $label = 'Actividades';
+    protected static ?string $label = 'Tipos De Actividades';
 
-    protected static ?string $navigationGroup = 'Reportes';
+    protected static ?string $navigationGroup = 'Valores';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->label('Nombre de la actividad')
-                    ->placeholder('Ingrese el nombre de la actividad')
-                    ->autofocus(),
+                //
             ]);
     }
 
@@ -65,9 +61,9 @@ class ActivityResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListActivities::route('/'),
-            'create' => Pages\CreateActivity::route('/create'),
-            'edit' => Pages\EditActivity::route('/{record}/edit'),
+            'index' => Pages\ListActivityTypes::route('/'),
+            'create' => Pages\CreateActivityTypes::route('/create'),
+            'edit' => Pages\EditActivityTypes::route('/{record}/edit'),
         ];
     }
 }
