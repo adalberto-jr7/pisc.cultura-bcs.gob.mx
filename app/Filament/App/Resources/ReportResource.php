@@ -33,6 +33,7 @@ class ReportResource extends Resource
                 Forms\Components\Select::make('project_id')
                     ->label('Proyecto')
                     ->columnSpanFull()
+                    ->required()
                     ->placeholder(fn(Forms\Get $get): string => empty($get('area_id')) ? 'Primero selecciona un proyecto' : 'Selecciona una opcion')
                     ->options(Project::where('area_id', Auth::user()->area_id)->pluck('description', 'id')),
                 Forms\Components\Hidden::make('area_id')
@@ -45,6 +46,7 @@ class ReportResource extends Resource
                     ->required()
                     ->collapsible()
                     ->columnSpanFull()
+                    ->addActionLabel('Agrega otra actividad')
                     ->schema([
                         Forms\Components\TextInput::make('activity_name')
                             ->placeholder('Escriba el nombre de la actividad')
@@ -204,7 +206,14 @@ class ReportResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('project.description'),
                 Tables\Columns\TextColumn::make('area.name'),
-                Tables\Columns\TextColumn::make('status'),
+                Tables\Columns\TextColumn::make('status')
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        'Pendiente' => 'gray',
+                        'En Proceso' => 'warning',
+                        'Rechazado' => 'danger',
+                        'Aceptado' => 'success'
+                    }),
             ])
             ->filters([
                 //

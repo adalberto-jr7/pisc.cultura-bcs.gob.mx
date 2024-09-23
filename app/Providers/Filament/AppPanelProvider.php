@@ -31,6 +31,7 @@ class AppPanelProvider extends PanelProvider
             ->id('app')
             ->darkMode(false)
             ->path('app')
+            ->sidebarCollapsibleOnDesktop()
             ->profile()
             ->navigation(function (NavigationBuilder $builder): NavigationBuilder {
                 return $builder->items([
@@ -38,7 +39,6 @@ class AppPanelProvider extends PanelProvider
                         ->icon('heroicon-o-home')
                         ->isActiveWhen(fn(): bool => request()->routeIs('filament.admin.pages.dashboard'))
                         ->url(fn(): string => Dashboard::getUrl()),
-                    ...ActivityResource::getNavigationItems(),
                     ...ReportResource::getNavigationItems(),
                     NavigationItem::make('Panel de control')
                         ->url(fn(): string => route('filament.administrador.pages.dashboard'))
