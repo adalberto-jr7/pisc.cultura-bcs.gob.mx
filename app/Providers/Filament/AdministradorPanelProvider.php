@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\Auth\Login;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -28,7 +29,8 @@ class AdministradorPanelProvider extends PanelProvider
             ->default()
             ->id('administrador')
             ->path('administrador')
-            ->login()
+            ->login(Login::class)
+            ->sidebarCollapsibleOnDesktop()
             ->navigationGroups([
                 'Reportes',
                 'Valores'
