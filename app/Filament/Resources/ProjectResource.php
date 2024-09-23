@@ -56,7 +56,18 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('Descripción'),
+                Tables\Columns\TextColumn::make('description')
+                    ->label('Descripción'),
+                Tables\Columns\TextColumn::make('code')
+                    ->label('Codigo'),
+                Tables\Columns\TextColumn::make('area.name')
+                    ->label('Area'),
+                Tables\Columns\TextColumn::make('initial_month')
+                    ->label('Mes inicial'),
+                Tables\Columns\TextColumn::make('last_month')
+                    ->label('Ultimo mes'),
+                Tables\Columns\TextColumn::make('year')
+                    ->label('Año'),
             ])
             ->filters([
                 //

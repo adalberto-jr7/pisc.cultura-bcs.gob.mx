@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable implements FilamentUser
 {
@@ -62,9 +63,10 @@ class User extends Authenticatable implements FilamentUser
     {
         return (string) $this->role;
     }
-    public function isAdmin(): bool
+    public static function isAdmin(): bool
     {
-        return $this->role() === self::ADMIN;
+        $user = Auth::user();
+        return $user->role() === self::ADMIN;
     }
     public function isUser(): bool
     {
