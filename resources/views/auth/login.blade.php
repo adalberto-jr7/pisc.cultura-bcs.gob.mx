@@ -12,7 +12,7 @@
                     <img src="{{ asset('assets/logo-1.jpg') }}" @style(['width: 450px'])>
                 </div>
                 <div class="col-2 mb-2">
-                    <img src="{{ asset('assets/ISC30N24.jpg') }}" @style(['width: 90px'])>
+                    <img src="{{ asset('assets/ISC30N24.jpg') }}" @style(['width: 78px'])>
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Recuerdame') }}
+                                        {{ __('Recuérdame') }}
                                     </label>
                                 </div>
                             </div>

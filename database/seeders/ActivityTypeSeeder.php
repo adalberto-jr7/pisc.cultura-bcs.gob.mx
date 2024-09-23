@@ -7,7 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ActivitySeeder extends Seeder
+class ActivityTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -34,6 +34,6 @@ class ActivitySeeder extends Seeder
             'Otros',
         ];
         $ft = new FillTables();
-        $ft->Fill($activities, 'activities');
+        $ft->Fill($activities, 'activity_types');
     }
 }
