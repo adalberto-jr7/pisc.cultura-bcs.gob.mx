@@ -208,13 +208,12 @@ class ReportResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('project.description'),
                 Tables\Columns\TextColumn::make('area.name'),
-                Tables\Columns\TextColumn::make('status')
+                Tables\Columns\TextColumn::make('status.name')
                     ->badge()
-                    ->color(fn(string $state): string => match ($state) {
-                        'Pendiente' => 'gray',
-                        'En Proceso' => 'warning',
-                        'Rechazado' => 'danger',
-                        'Aceptado' => 'success'
+                    ->color(fn(string  $state): string => match ($state) {
+                        'Pendiente' => 'info',
+                        'En curso' => 'warning',
+                        'Concluido' => 'success',
                     }),
             ])
             ->filters([

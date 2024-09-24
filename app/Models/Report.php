@@ -31,6 +31,11 @@ class Report extends Model
         return $this->belongsTo(Area::class);
     }
 
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(Status::class);
+    }
+
     public function activities()
     {
         return $this->belongsToMany(Activity::class, 'report_activity')
