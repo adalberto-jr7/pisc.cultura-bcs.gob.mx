@@ -15,10 +15,12 @@ class Login extends BaseLogin
                 TextInput::make('email')
                 ->label('Correo Electrónico')
                 ->placeholder('Ingrese el correo electronico')
-                    ->required(),
+                ->required(),
                 TextInput::make('password')
                 ->label('Contraseña')
                 ->placeholder('Ingrese su contraseña')
+                ->password()
+                ->revealable()
                     ->required()
             ]);
     }
