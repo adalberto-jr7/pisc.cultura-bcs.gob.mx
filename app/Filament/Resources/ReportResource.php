@@ -13,6 +13,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -40,6 +41,7 @@ class ReportResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('project.description')
+                    ->searchable()
                     ->label('Proyecto'),
                 TextColumn::make('area.name')
                     ->label('Area'),
@@ -52,7 +54,14 @@ class ReportResource extends Resource
                     ->rules(['required'])
             ])
             ->filters([
-                //
+                SelectFilter::make('Area')
+                    ->relationship('area', 'name'),
+                SelectFilter::make('Proyecto')
+                    ->relationship('project', 'description'),
+                SelectFilter::make('Usuario')
+                    ->relationship('user', 'name'),
+                SelectFilter::make('Estado')
+                    ->relationship('status', 'name')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -84,5 +93,4 @@ class ReportResource extends Resource
     {
         return false;
     }
-
 }

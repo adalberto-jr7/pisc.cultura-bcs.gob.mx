@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             StatusSeeder::class,
             FinnancingSourceSeeder::class,
             AreaSeeder::class,
+            ProjectSeeder::class,
         ]);
     }
 }

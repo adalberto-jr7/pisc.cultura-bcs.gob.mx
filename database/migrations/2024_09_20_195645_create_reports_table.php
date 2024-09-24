@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignIdFor(Area::class);
             $table->foreignIdFor(Project::class);
             $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Status::class);
+            $table->foreignIdFor(Status::class)->default(3);
             $table->timestamps();
         });
     }
