@@ -13,8 +13,12 @@ class Login extends BaseLogin
         return $form
             ->schema([
                 TextInput::make('email')
+                ->label('Correo Electrónico')
+                ->placeholder('Ingrese el correo electronico')
                     ->required(),
                 TextInput::make('password')
+                ->label('Contraseña')
+                ->placeholder('Ingrese su contraseña')
                     ->required()
             ]);
     }
