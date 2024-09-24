@@ -92,8 +92,9 @@ class ReportResource extends Resource
                             ->required()
                             ->placeholder('Escriba el nombre del lugar donde se realizó')
                             ->columnSpan(2),
-                        Forms\Components\TextInput::make('locality')
+                            Forms\Components\TextInput::make('locality')
                             ->label('Localidad')
+                            ->placeholder('Escriba la localidad')
                             ->required(),
                         Forms\Components\Select::make('municipality')
                             ->label('Municipio')
@@ -131,30 +132,38 @@ class ReportResource extends Resource
                                 Forms\Components\Fieldset::make('Niñas y niños')
                                     ->schema([
                                         Forms\Components\TextInput::make('children_girls')
-                                            ->label('Femenino'),
+                                            ->label('Femenino')
+                                            ->placeholder('Escriba la cantidad de niñas'),
                                         Forms\Components\TextInput::make('children_boys')
-                                            ->label('Masculino'),
+                                            ->label('Masculino')
+                                            ->placeholder('Escriba la cantidad de niños'),
                                     ]),
                                 Forms\Components\Fieldset::make('Jóvenes')
                                     ->schema([
                                         Forms\Components\TextInput::make('youth_women')
-                                            ->label('Femenino'),
+                                            ->label('Femenino')
+                                            ->placeholder('Escriba la cantidad de jovenes mujeres'),
                                         Forms\Components\TextInput::make('youth_men')
-                                            ->label('Masculino'),
+                                            ->label('Masculino')
+                                            ->placeholder('Escriba la cantidad de jovenes hombres'),
                                     ]),
                                 Forms\Components\Fieldset::make('Adultos')
                                     ->schema([
                                         Forms\Components\TextInput::make('adult_women')
-                                            ->label('Femenino'),
+                                            ->label('Femenino')
+                                            ->placeholder('Escriba la cantidad de adultos mujeres'),
                                         Forms\Components\TextInput::make('adult_men')
-                                            ->label('Masculino'),
+                                            ->label('Masculino')
+                                            ->placeholder('Escriba la cantidad de adultos hombres'),
                                     ]),
                                 Forms\Components\Fieldset::make('Personas mayores')
                                     ->schema([
                                         Forms\Components\TextInput::make('senior_women')
-                                            ->label('Femenino'),
+                                            ->label('Femenino')
+                                            ->placeholder('Escriba la cantidad de personas mayores mujeres'),
                                         Forms\Components\TextInput::make('senior_men')
-                                            ->label('Masculino'),
+                                            ->label('Masculino')
+                                            ->placeholder('Escriba la cantidad de personas mayores hombres'),
                                     ])
 
                             ]),
