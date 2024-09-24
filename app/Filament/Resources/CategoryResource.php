@@ -19,7 +19,7 @@ class CategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
-    protected static ?string $label = 'Categoria';
+    protected static ?string $label = 'Categoría';
 
     protected static ?string $navigationGroup = 'Valores';
 
@@ -29,7 +29,7 @@ class CategoryResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                 ->label('Nombre')
-                ->placeholder('Ingrese el nombre de la categoria'),
+                ->placeholder('Ingrese el nombre de la categoría'),
             ]);
     }
 
