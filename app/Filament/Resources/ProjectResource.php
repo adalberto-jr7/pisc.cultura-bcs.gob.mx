@@ -13,6 +13,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 
@@ -58,16 +59,13 @@ class ProjectResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('description')
                     ->label('Descripción'),
-                Tables\Columns\TextColumn::make('code')
-                    ->label('Codigo'),
                 Tables\Columns\TextColumn::make('area.name')
                     ->label('Area'),
                 Tables\Columns\TextColumn::make('initial_month')
-                    ->label('Mes inicial'),
-                Tables\Columns\TextColumn::make('last_month')
-                    ->label('Ultimo mes'),
-                Tables\Columns\TextColumn::make('year')
-                    ->label('Año'),
+                    ->label('Periodo')
+                    ->formatStateUsing(function (Project $project) {
+                        return $project->initial_month->getLabel() . ' - ' . $project->last_month->getLabel() . ' del ' . $project->year;
+                    }),
             ])
             ->filters([
                 //
