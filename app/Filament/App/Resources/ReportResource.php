@@ -11,6 +11,7 @@ use App\Models\Discipline;
 use App\Models\FinnancingSource;
 use App\Models\Project;
 use App\Models\Report;
+use Filament\Forms\Components\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -47,6 +48,7 @@ class ReportResource extends Resource
                     ->collapsible()
                     ->columnSpanFull()
                     ->addActionLabel('Agrega otra actividad')
+                    ->cloneable()
                     ->schema([
                         Forms\Components\TextInput::make('activity_name')
                             ->placeholder('Escriba el nombre de la actividad')
@@ -196,7 +198,7 @@ class ReportResource extends Resource
 
                         Forms\Components\Hidden::make('area_id')
                             ->default((int) Auth::user()->area_id),
-                    ])->columns(2),
+                    ])->columns(2)->deleteAction(fn(Action $action) => $action->requiresConfirmation()),
             ]);
     }
 
