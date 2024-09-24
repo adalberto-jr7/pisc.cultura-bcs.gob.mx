@@ -2,6 +2,7 @@
 
 use App\Models\Area;
 use App\Models\Project;
+use App\Models\Status;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -19,7 +20,7 @@ return new class extends Migration
             $table->foreignIdFor(Area::class);
             $table->foreignIdFor(Project::class);
             $table->foreignIdFor(User::class);
-            $table->enum('status', ['Pendiente', 'En Proceso', 'Rechazado', 'Aceptado'])->default('Pendiente');
+            $table->foreignIdFor(Status::class);
             $table->timestamps();
         });
     }

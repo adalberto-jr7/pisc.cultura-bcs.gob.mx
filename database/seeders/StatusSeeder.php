@@ -20,6 +20,6 @@ class StatusSeeder extends Seeder
             'Pendiente',
         ];
         $ft = new FillTables();
-        $ft->Fill($statuses, 'status');
+        $ft->Fill($statuses, 'statuses');
     }
 }

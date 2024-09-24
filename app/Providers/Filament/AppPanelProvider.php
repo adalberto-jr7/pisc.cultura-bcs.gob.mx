@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use App\Filament\App\Resources\ActivityResource;
 use App\Filament\App\Resources\ReportResource;
+use App\Filament\App\Widgets\AreaWidget;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -21,6 +22,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class AppPanelProvider extends PanelProvider
@@ -42,7 +44,7 @@ class AppPanelProvider extends PanelProvider
                     ...ReportResource::getNavigationItems(),
                     NavigationItem::make('Panel de control')
                         ->url(fn(): string => route('filament.administrador.pages.dashboard'))
-                        ->visible(Auth::user()->isAdmin())
+                        ->visible(Gate::allows('isAdmin'))
                         ->icon('heroicon-o-table-cells')
                 ]);
             })
@@ -58,7 +60,7 @@ class AppPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/App/Widgets'), for: 'App\\Filament\\App\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
+                AreaWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
