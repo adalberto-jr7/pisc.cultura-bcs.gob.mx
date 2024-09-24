@@ -41,6 +41,7 @@ class ReportResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('project.description')
+                    ->searchable()
                     ->label('Proyecto'),
                 TextColumn::make('area.name')
                     ->label('Area'),
