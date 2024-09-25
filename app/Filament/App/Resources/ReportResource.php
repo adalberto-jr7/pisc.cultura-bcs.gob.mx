@@ -92,14 +92,32 @@ class ReportResource extends Resource
                             ->required()
                             ->placeholder('Escriba el nombre del lugar donde se realizó')
                             ->columnSpan(2),
-                            Forms\Components\TextInput::make('locality')
-                            ->label('Localidad')
-                            ->placeholder('Escriba la localidad')
-                            ->required(),
                         Forms\Components\Select::make('municipality')
                             ->label('Municipio')
                             ->required()
+                            ->reactive()
                             ->options(MunicipalityEnum::class),
+                        Forms\Components\Select::make('locality')
+                            ->label('Localidad')
+                            ->placeholder(function (callable $get) {
+                                if ($get('municipality') !== null) {
+                                    return "Selecciona una localidad de " . $get('municipality');
+                                } else return "Primero seleccione un municipio";
+                            })
+                            ->required()
+                            ->reactive()
+                            ->options(function (callable $get) {
+                                $municipio = $get('municipality');
+                                $localidades = match ($municipio) {
+                                    "LA PAZ" => ["La Paz", "Todos Santos", "El Centenario", "El Pescadero"],
+                                    "LORETO" => ["Loreto", "Ensenada Blanca", "Ligüí", "Puerto Agua Verde"],
+                                    "LOS CABOS" => ["San José del Cabo", "Cabo San Lucas", "Colonia del Sol", "Las Palmas"],
+                                    "COMONDÚ" => ["Ciudad Constitución", "Ciudad Insurgentes", "Puerto San Carlos", "Puerto Adolfo López Mateos"],
+                                    "MULEGÉ" => ["Guerrero Negro", "Santa Rosalía", "Villa Alberto Andrés Alvarado Arámburo", "Heroica Mulegé"],
+                                    default => null,
+                                };
+                                return $localidades;
+                            }),
                         //Personas
 
                         Forms\Components\Section::make('Población atendida')
@@ -209,7 +227,7 @@ class ReportResource extends Resource
                             ->options(FinnancingSource::query()->pluck('name', 'id')),
 
                         Forms\Components\Hidden::make('area_id')
-                            ->default((int) Auth::user()->area_id),
+                            ->default((int)Auth::user()->area_id),
                     ])->columns(2)->deleteAction(fn(Action $action) => $action->requiresConfirmation()),
             ]);
     }
@@ -222,7 +240,7 @@ class ReportResource extends Resource
                 Tables\Columns\TextColumn::make('area.name'),
                 Tables\Columns\TextColumn::make('status.name')
                     ->badge()
-                    ->color(fn(string  $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         'Pendiente' => 'info',
                         'En curso' => 'warning',
                         'Concluido' => 'success',
