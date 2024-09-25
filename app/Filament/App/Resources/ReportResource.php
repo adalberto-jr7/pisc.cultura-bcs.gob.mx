@@ -177,14 +177,16 @@ class ReportResource extends Resource
                                     ->placeholder('Escriba la cantidad de mujeres')
                                     ->label('Mujeres'),
                                 Forms\Components\TextInput::make('social_childrens')
-                                    ->label('Niños, niñas y jóvenes'),
+                                    ->label('Niños, niñas y jóvenes')
+                                    ->placeholder('Escriba la cantidad total de niños, niñas y jovenes'),
                                 Forms\Components\TextInput::make('social_seniors')
                                     ->placeholder('Escriba la cantidad de adultos mayores')
                                     ->label('Adultos mayores'),
                                 Forms\Components\TextInput::make('social_indigenous')
-                                    ->label('Indígenas'),
+                                    ->label('Indígenas')
+                                    ->placeholder('Escriba la cantidad de personas indigenas'),
                                 Forms\Components\TextInput::make('social_disabled')
-                                    ->placeholder('Escriba la cantidad de discapacitados')
+                                    ->placeholder('Escriba la cantidad de personas discapacitadas')
                                     ->label('Discapacitados'),
                                 Forms\Components\TextInput::make('social_migrants')
                                     ->placeholder('Escriba la cantidad de migrantes')
@@ -193,9 +195,10 @@ class ReportResource extends Resource
                                     ->placeholder('Escriba la cantidad de afrodescendientes')
                                     ->label('Afrodescendientes'),
                                 Forms\Components\TextInput::make('social_incarcerated')
-                                    ->label('En reclusión'),
+                                    ->label('En reclusión')
+                                    ->placeholder('Escriba la cantidad de personas en reclusion'),
                                 Forms\Components\TextInput::make('social_lgbtttiq')
-                                    ->placeholder('Escriba la cantidad de personas lgbt+')
+                                    ->placeholder('Escriba la cantidad de personas LGBTQ+')
                                     ->label('LGBTQ+'),
 
                             ]),
