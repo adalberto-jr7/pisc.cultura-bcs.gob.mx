@@ -122,6 +122,8 @@ class ReportResource extends Resource
 
                         Forms\Components\Section::make('Población atendida')
                             ->columns(1)
+                            ->collapsible()
+                            ->description("Totald de personas atendidas")
                             ->schema([
                                 Forms\Components\TextInput::make('total')
                                     ->columnSpanFull()
@@ -237,6 +239,11 @@ class ReportResource extends Resource
                 Tables\Columns\TextColumn::make('area.name'),
                 Tables\Columns\TextColumn::make('status.name')
                     ->badge()
+                    ->icon(fn (string $state): string => match ($state) {
+                        'Pendiente' => 'heroicon-m-arrow-path',
+                        'En curso' => 'heroicon-m-truck',
+                        'Concluido' => 'heroicon-m-check-badge',
+                    })
                     ->color(fn(string $state): string => match ($state) {
                         'Pendiente' => 'info',
                         'En curso' => 'warning',
