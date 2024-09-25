@@ -160,10 +160,10 @@ class ReportResource extends Resource
                                     ->schema([
                                         Forms\Components\TextInput::make('youth_women')
                                             ->label('Femenino')
-                                            ->placeholder('Escriba la cantidad de jovenes mujeres'),
+                                            ->placeholder('Escriba la cantidad de jóvenes mujeres'),
                                         Forms\Components\TextInput::make('youth_men')
                                             ->label('Masculino')
-                                            ->placeholder('Escriba la cantidad de jovenes hombres'),
+                                            ->placeholder('Escriba la cantidad de jóvenes hombres'),
                                     ]),
                                 Forms\Components\Fieldset::make('Adultos')
                                     ->schema([
@@ -196,13 +196,13 @@ class ReportResource extends Resource
                                     ->label('Mujeres'),
                                 Forms\Components\TextInput::make('social_childrens')
                                     ->label('Niños, niñas y jóvenes')
-                                    ->placeholder('Escriba la cantidad total de niños, niñas y jovenes'),
+                                    ->placeholder('Escriba la cantidad total de niños, niñas y jóvenes'),
                                 Forms\Components\TextInput::make('social_seniors')
                                     ->placeholder('Escriba la cantidad de adultos mayores')
                                     ->label('Adultos mayores'),
                                 Forms\Components\TextInput::make('social_indigenous')
                                     ->label('Indígenas')
-                                    ->placeholder('Escriba la cantidad de personas indigenas'),
+                                    ->placeholder('Escriba la cantidad de personas indígenas'),
                                 Forms\Components\TextInput::make('social_disabled')
                                     ->placeholder('Escriba la cantidad de personas discapacitadas')
                                     ->label('Discapacitados'),
@@ -214,7 +214,7 @@ class ReportResource extends Resource
                                     ->label('Afrodescendientes'),
                                 Forms\Components\TextInput::make('social_incarcerated')
                                     ->label('En reclusión')
-                                    ->placeholder('Escriba la cantidad de personas en reclusion'),
+                                    ->placeholder('Escriba la cantidad de personas en reclusión'),
                                 Forms\Components\TextInput::make('social_lgbtttiq')
                                     ->placeholder('Escriba la cantidad de personas LGBTQ+')
                                     ->label('LGBTQ+'),
