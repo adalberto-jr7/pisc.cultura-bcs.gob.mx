@@ -47,11 +47,8 @@ class ReportResource extends Resource
                     ->label('Area'),
                 TextColumn::make('user.name')
                     ->label('Usuario'),
-                SelectColumn::make('status')
+                TextColumn::make('status.name')
                     ->label('Estado')
-                    ->options(Status::query()->pluck('name', 'id'))
-                    ->selectablePlaceholder(false)
-                    ->rules(['required'])
             ])
             ->filters([
                 SelectFilter::make('Area')
@@ -60,8 +57,6 @@ class ReportResource extends Resource
                     ->relationship('project', 'description'),
                 SelectFilter::make('Usuario')
                     ->relationship('user', 'name'),
-                SelectFilter::make('Estado')
-                    ->relationship('status', 'name')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

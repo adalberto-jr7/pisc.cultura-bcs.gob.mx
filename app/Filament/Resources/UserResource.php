@@ -67,17 +67,13 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label('Nombre')
-                    ->placeholder('Ingrese el nombre'),
+                    ->label('Nombre'),
                 Tables\Columns\TextColumn::make('username')
-                    ->label('Usuario')
-                    ->placeholder('Ingrese el nombre de usuario'),
+                    ->label('Usuario'),
                 Tables\Columns\TextColumn::make('email')
-                    ->label('Correo electrónico')
-                    ->placeholder('Ingrese el correo electrónico'),
+                    ->label('Correo electrónico'),
                 Tables\Columns\TextColumn::make('number_phone')
-                    ->label('Número de teléfono')
-                    ->placeholder('Ingrese el número de teléfono'),
+                    ->label('Número de teléfono'),
                 Tables\Columns\TextColumn::make('position')
                     ->label('Posición'),
             ])

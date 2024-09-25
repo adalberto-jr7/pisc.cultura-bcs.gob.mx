@@ -72,4 +72,9 @@ class Activity extends Model
         return $this->belongsToMany(Report::class, 'report_activity')
             ->withTimestamps();
     }
+
+    public function activity_type(): BelongsTo
+    {
+        return $this->belongsTo(ActivityType::class);
+    }
 }

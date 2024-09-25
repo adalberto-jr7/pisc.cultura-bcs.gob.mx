@@ -31,7 +31,6 @@ class AppPanelProvider extends PanelProvider
     {
         return $panel
             ->id('app')
-            ->darkMode(false)
             ->brandName('Proyectos Instituto Sudcaliforniano de Cultura')
             ->path('app')
             ->sidebarCollapsibleOnDesktop()
