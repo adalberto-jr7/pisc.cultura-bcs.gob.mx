@@ -71,7 +71,7 @@
                         <div class="mb-0">
                             <div class="col-md-8 offset-md-3">
                                 <button type="submit" class="btn btn-primary" @style(['background-color: #9F2241'])>
-                                    {{ __('Continuar') }}
+                                    {{ __('Acceder') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
