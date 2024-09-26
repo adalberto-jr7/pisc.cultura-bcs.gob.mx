@@ -7,4 +7,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/app');
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => false, 'reset' => false]);

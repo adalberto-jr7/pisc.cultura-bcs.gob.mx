@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container d-flex align-items-start mt-3 " @style(['width: 850px'])>
-    
+
     <div class="row justify-content-center mt-0">
 
         <div class="d-flex justify-content-center mt-5">
@@ -18,7 +18,7 @@
         </div>
 
 
-        
+
         <div class="col-md-8 d-flex justify-content-center mt-4" @style(['width: 850px'])>
             <div class="card" @style(['width: 500px'])>
                 <div class="card-header d-flex justify-content-center text-white" @style(['background-color: #9F2241'])>{{ __('Iniciar Sesión') }}</div>
@@ -35,15 +35,15 @@
 
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong>Estas credenciales no coinciden</strong>
                                 </span>
                                 @enderror
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            
-                            <label for="password"  class="col-md-4 col-form-label text-md-end"><i class="bi bi-lock"></i></label> 
+
+                            <label for="password"  class="col-md-4 col-form-label text-md-end"><i class="bi bi-lock"></i></label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" placeholder="Ingresa tu Contraseña" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
@@ -73,12 +73,6 @@
                                 <button type="submit" class="btn btn-primary" @style(['background-color: #9F2241'])>
                                     {{ __('Acceder') }}
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('¿Olvidaste tu contraseña?') }}
-                                </a>
-                                @endif
                             </div>
                         </div>
                     </form>
@@ -86,7 +80,7 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 
 
 
