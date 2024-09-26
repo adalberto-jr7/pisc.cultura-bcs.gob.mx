@@ -123,7 +123,7 @@ class ReportResource extends Resource
                         Forms\Components\Section::make('Población atendida')
                             ->columns(1)
                             ->collapsible()
-                            ->description("Totald de personas atendidas")
+                            ->description("Total de personas atendidas")
                             ->schema([
                                 Forms\Components\TextInput::make('total')
                                     ->columnSpanFull()
