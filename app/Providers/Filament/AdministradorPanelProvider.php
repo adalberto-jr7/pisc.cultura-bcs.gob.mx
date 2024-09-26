@@ -3,6 +3,8 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Pages\Auth\Login;
+use App\Filament\Resources\AdministradorResource\Widgets\ReporteEstadisticoActividades;
+use App\Filament\Widgets\TotalReportsWidget;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -24,7 +26,6 @@ class AdministradorPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->darkMode(false)
             ->brandName('Proyectos Instituto Sudcaliforniano de Cultura')
             ->default()
             ->id('administrador')
@@ -47,7 +48,7 @@ class AdministradorPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
+                ReporteEstadisticoActividades::class
             ])
             ->middleware([
                 EncryptCookies::class,
