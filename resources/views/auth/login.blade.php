@@ -28,9 +28,9 @@
                         @csrf
 
                         <div class="row mb-3">
-                        <label for="email" class="col-md-4 col-form-label text-md-end"><i class="bi bi-person"></i></label>
+                        <label for="email" class="col-md-4 col-form-label text-md-end">Correo Electrónico</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 w-100">
                                 <input id="email" type="email" placeholder="Ingresa tu Correo Electrónico" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -43,9 +43,9 @@
 
                         <div class="row mb-3">
 
-                            <label for="password"  class="col-md-4 col-form-label text-md-end"><i class="bi bi-lock"></i></label>
+                            <label for="password"  class="col-md-3 col-form-label text-md-end">Contraseña</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 w-100">
                                 <input id="password" type="password" placeholder="Ingresa tu Contraseña" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
@@ -68,9 +68,9 @@
                             </div>
                         </div>
 
-                        <div class="mb-0">
-                            <div class="col-md-8 offset-md-3">
-                                <button type="submit" class="btn btn-primary" @style(['background-color: #9F2241'])>
+                        <div class="mb-0  ps-0 d-flex justify-content-center border border-black">
+                            <div class="col-md-8 d-grid gap- ps-0 w-100">
+                                <button type="submit" class="btn btn-primary container-fluid" @style(['background-color: #9F2241'])>
                                     {{ __('Acceder') }}
                                 </button>
                             </div>

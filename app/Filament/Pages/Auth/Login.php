@@ -14,7 +14,7 @@ class Login extends BaseLogin
             ->schema([
                 TextInput::make('email')
                 ->label('Correo Electrónico')
-                ->placeholder('Ingrese el correo electronico')
+                ->placeholder('Ingrese el correo electrónico')
                 ->required(),
                 TextInput::make('password')
                 ->label('Contraseña')
