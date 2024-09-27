@@ -44,14 +44,14 @@ class ReportResource extends Resource
                     ->searchable()
                     ->label('Proyecto'),
                 TextColumn::make('area.name')
-                    ->label('Area'),
+                    ->label('Área'),
                 TextColumn::make('user.name')
                     ->label('Usuario'),
                 TextColumn::make('status.name')
                     ->label('Estado')
             ])
             ->filters([
-                SelectFilter::make('Area')
+                SelectFilter::make('Área')
                     ->relationship('area', 'name'),
                 SelectFilter::make('Proyecto')
                     ->relationship('project', 'description'),
