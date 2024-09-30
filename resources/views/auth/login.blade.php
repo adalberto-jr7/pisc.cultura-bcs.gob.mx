@@ -20,7 +20,7 @@
 
 
         <div class="col-md-8 d-flex justify-content-center mt-4" @style(['width: 850px'])>
-            <div class="card shadow-lg" @style(['width: 500px'])>
+            <div class="card" @style(['width: 500px'])>
                 <div class="card-header d-flex justify-content-center text-white" @style(['background-color: #9F2241'])>{{ __('Iniciar Sesión') }}</div>
 
                 <div class="card-body">
