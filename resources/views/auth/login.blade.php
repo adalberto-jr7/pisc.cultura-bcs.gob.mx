@@ -12,7 +12,7 @@
                     <img src="{{ asset('assets/logo-1.jpg') }}" @style(['width: 449px'])>
                 </div>
                 <div class="col-2 mb-2">
-                    <img src="{{ asset('assets/ISC30N24.jpg') }}" @style(['width: 78px'])>
+                    <img  src="{{ asset('assets/ISC30N24.jpg') }}" @style(['width: 78px'])>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
 
 
         <div class="col-md-8 d-flex justify-content-center mt-4" @style(['width: 850px'])>
-            <div class="card" @style(['width: 500px'])>
+            <div class="card shadow-lg" @style(['width: 500px'])>
                 <div class="card-header d-flex justify-content-center text-white" @style(['background-color: #9F2241'])>{{ __('Iniciar Sesión') }}</div>
 
                 <div class="card-body">
@@ -56,10 +56,10 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
+                        <div class="row mb-3 pe-5">
+                            <div class="col-12 container d-flex justify-content-start ">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <input class="form-check-input" @style(['border-color: #9F2241']) type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
                                         {{ __('Recuérdame') }}
@@ -68,9 +68,9 @@
                             </div>
                         </div>
 
-                        <div class="mb-0  ps-0 d-flex justify-content-center border border-black">
+                        <div class="mb-0  ps-0 d-flex justify-content-center">
                             <div class="col-md-8 d-grid gap- ps-0 w-100">
-                                <button type="submit" class="btn btn-primary container-fluid" @style(['background-color: #9F2241'])>
+                                <button type="submit" class="btn btn-primary container-fluid" @style(['background-color: #9F2241', 'hover:color:#640D5F'])>
                                     {{ __('Acceder') }}
                                 </button>
                             </div>
