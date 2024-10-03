@@ -9,4 +9,13 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateProject extends CreateRecord
 {
     protected static string $resource = ProjectResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            Actions\Action::make('Salir')
+                ->icon('heroicon-o-chevron-left')
+                ->url(url()->previous())
+        ];
+    }
 }
