@@ -27,7 +27,10 @@ class ActivityTypesResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->label('Nombre')
+                    ->placeholder('Nombre del tipo de actividad')
+                    ->required(),
             ]);
     }
 
