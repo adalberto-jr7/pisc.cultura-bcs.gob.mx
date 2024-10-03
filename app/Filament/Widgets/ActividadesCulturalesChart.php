@@ -41,12 +41,12 @@ class ActividadesCulturalesChart extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Numero de actividades',
+                    'label' => 'Número de actividades',
                     'data' => $activityCounts,
                     'order' => 1,
                 ],
                 [
-                    'label' => 'Numero de asistentes',
+                    'label' => 'Número de asistentes',
                     'data' => $activityTotalAssistent,
                     'order' => 2,
                 ]

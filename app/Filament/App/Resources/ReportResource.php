@@ -59,7 +59,7 @@ class ReportResource extends Resource
                             ->placeholder(fn(Forms\Get $get): string => empty($get('category_id')) ? 'Primero Selecciona una categoría' : 'Selecciona una opción')
                             ->options(Category::query()->pluck('name', 'id')),
                         Forms\Components\Textarea::make('activity_goal')
-                            ->placeholder('Escriba las metas de las actividad')
+                            ->placeholder('Escriba las metas de las actividades')
                             ->required()
                             ->label('Metas de la actividad'),
                         Forms\Components\Textarea::make('description')
