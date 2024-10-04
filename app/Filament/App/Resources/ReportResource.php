@@ -17,6 +17,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 
 class ReportResource extends Resource
@@ -237,12 +238,15 @@ class ReportResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->modifyQueryUsing(function (Builder $query) {
+                return $query->where('area_id', Auth::user()->area_id);
+            })
             ->columns([
                 Tables\Columns\TextColumn::make('project.description'),
                 Tables\Columns\TextColumn::make('area.name'),
                 Tables\Columns\TextColumn::make('status.name')
                     ->badge()
-                    ->icon(fn (string $state): string => match ($state) {
+                    ->icon(fn(string $state): string => match ($state) {
                         'Pendiente' => 'heroicon-m-arrow-path',
                         'En curso' => 'heroicon-m-truck',
                         'Concluido' => 'heroicon-m-check-badge',
