@@ -10,9 +10,10 @@ use App\Models\ActivityType;
 use App\Models\Category;
 use App\Models\Discipline;
 use App\Models\FinnancingSource;
-use App\Models\Project;
 use App\Models\Report;
 use Filament\Forms\Components\Actions\Action;
+use Filament\Notifications\Events\DatabaseNotificationsSent;
+use Filament\Notifications\Notification;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Forms\Form;
 use Filament\Forms;
@@ -22,6 +23,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\HtmlString;
 
 class ReportResource extends Resource
 {
@@ -284,6 +286,44 @@ class ReportResource extends Resource
                         ->label('Exportar')
                         ->icon('heroicon-o-document-arrow-down')
                         ->action(fn() => \Maatwebsite\Excel\Facades\Excel::download(new ReportsExport(), 'reports.xlsx')),
+                    Tables\Actions\Action::make('Notificar')
+                        ->icon('heroicon-o-exclamation-triangle')
+                        ->form(function ($record) {
+                            return [
+                                Forms\Components\TextInput::make('title')
+                                    ->label('Título')
+                                    ->placeholder('Escribe el título de la notificacion')
+                                    ->default($record->project->description)
+                                    ->required(),
+                                Forms\Components\TextArea::make('description')
+                                    ->label('Descripción')
+                                    ->placeholder('Escribe la descripción de la notificacion')
+                                    ->required(),
+                            ];
+                        })
+                        ->action(function ($record, $data) {
+                            Notification::make()
+                                ->title(new HtmlString('<p><strong>' . $data['title'] . '</strong><br />' . Auth::user()->name . '</p>'))
+                                ->body($data['description'])
+                                ->icon('heroicon-o-bell')
+                                ->iconColor('danger')
+                                ->actions([
+                                    \Filament\Notifications\Actions\Action::make('Ver reporte notificado')
+                                        ->url(route('filament.app.resources.reports.edit', $record->id))
+                                        ->button(),
+                                ])
+                                ->success()
+                                ->duration(10)
+                                ->sendToDatabase($record->user);
+                            event(new DatabaseNotificationsSent($record->user));
+                            $record->save();
+
+                            Notification::make()
+                                ->title('Notificación enviada')
+                                ->body(new HtmlString('<p>Se ha enviado una notificación a <strong>' . $record->user->name . '</strong></p>'))
+                                ->success()
+                                ->send();
+                        })->color('danger'),
                 ]),
             ])
             ->bulkActions([

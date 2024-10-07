@@ -33,6 +33,8 @@ class AdministradorPanelProvider extends PanelProvider
             ->path('administrador')
             ->login(Login::class)
             ->sidebarCollapsibleOnDesktop()
+            ->databaseNotifications()
+            ->databaseNotificationsPolling('5s')
             ->navigationGroups([
                 'Reportes',
                 'Valores'

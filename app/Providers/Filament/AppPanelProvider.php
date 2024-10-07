@@ -35,6 +35,8 @@ class AppPanelProvider extends PanelProvider
             ->path('app')
             ->sidebarCollapsibleOnDesktop()
             ->profile()
+            ->databaseNotifications()
+            ->databaseNotifications('15s')
             ->navigation(function (NavigationBuilder $builder): NavigationBuilder {
                 return $builder->items([
                     NavigationItem::make('Escritorio')
