@@ -57,6 +57,28 @@ class UserResource extends Resource
                 Forms\Components\Select::make('area_id')
                     ->required()
                     ->label('Área')
+                    ->relationship('area', 'name')
+                    ->createOptionForm([
+                        Forms\Components\Grid::make([
+                            'default' => 1,
+                            'xl' => 2,
+                        ])
+                            ->schema([
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->label('Nombre')
+                                    ->placeholder('Ingresa el nombre del área'),
+                                Forms\Components\TextInput::make('code')
+                                    ->required()
+                                    ->label('Codigo')
+                                    ->placeholder('Ingresa el codigo del área'),
+                                Forms\Components\Textarea::make('description')
+                                    ->required()
+                                    ->label('Descripción')
+                                    ->columnSpanFull()
+                                    ->placeholder('Ingresa la descripción del área'),
+                            ]),
+                    ])
                     ->placeholder(fn(Forms\Get $get): string => empty($get('area_id')) ? 'Primero Selecciona un área' : 'Selecciona una opción')
                     ->options(Area::query()->pluck('name', 'id'))
             ]);
