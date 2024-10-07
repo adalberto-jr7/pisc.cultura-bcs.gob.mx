@@ -46,8 +46,8 @@
                             <label for="password"  class="col-md-3 col-form-label text-md-end">Contraseña</label>
 
                             <div class="col-md-6 w-100">
-                                <input id="password" type="password" placeholder="Ingresa tu Contraseña" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
+                                <input id="password" type="password" placeholder="Ingresa tu Contraseña" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"> 
+                                
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -81,7 +81,5 @@
         </div>
     </div>
 </div>
-
-
 
 @endsection
