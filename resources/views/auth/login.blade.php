@@ -43,10 +43,10 @@
 
                         <div class="row mb-3">
 
-                            <label for="password"  class="col-md-3 col-form-label text-md-end">Contraseña</label>
+                            <label for="password" class="col-md-3 col-form-label text-md-end" >Contraseña</label>
 
-                            <div class="col-md-6 w-100">
-                                <input id="password" type="password" placeholder="Ingresa tu Contraseña" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"> 
+                            <div class="col-md-6 w-100 input-group">
+                                <input id="password" type="password" placeholder="Ingresa tu Contraseña" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"> <span class="input-group-text"><i class="bi bi-eye-slash bi-black" @style(['color: #9F2241']) id="togglePassword"></i></span>
                                 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -81,5 +81,24 @@
         </div>
     </div>
 </div>
+
+<script>
+    // revelar contraseña script
+        const togglePassword = document
+            .querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        togglePassword.addEventListener('click', () => {
+            // Toggle the type attribute using
+            // getAttribure() method
+            const type = password
+                .getAttribute('type') === 'password' ?
+                'text' : 'password';
+            password.setAttribute('type', type);
+            // Toggle the eye and bi-eye icon
+            this.classList.toggle('bi-eye');
+        });
+</script>
+
+
 
 @endsection
