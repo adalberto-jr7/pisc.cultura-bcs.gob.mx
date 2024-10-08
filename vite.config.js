@@ -7,7 +7,8 @@ export default defineConfig({
             input: [
                 'resources/sass/app.scss',
                 'resources/js/app.js',
-                'resources/css/filament/administrador/theme.css'
+                'resources/css/filament/administrador/theme.css',
+                'resources/js/filament-chart-js-plugin.js',
             ],
             refresh: true,
         }),

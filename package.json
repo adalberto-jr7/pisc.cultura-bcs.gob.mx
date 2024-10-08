@@ -12,6 +12,7 @@
         "autoprefixer": "^10.4.20",
         "axios": "^1.7.4",
         "bootstrap": "^5.2.3",
+        "chartjs-plugin-datalabels": "^2.2.0",
         "laravel-vite-plugin": "^1.0",
         "postcss": "^8.4.45",
         "postcss-nesting": "^13.0.0",

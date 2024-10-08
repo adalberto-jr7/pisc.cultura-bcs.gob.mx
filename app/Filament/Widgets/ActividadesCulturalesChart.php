@@ -3,6 +3,7 @@
 namespace App\Filament\Widgets;
 
 use App\Models\ActivityType;
+use Filament\Support\RawJs;
 use Filament\Widgets\ChartWidget;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -17,13 +18,25 @@ class ActividadesCulturalesChart extends ChartWidget
 
     protected static ?string $maxHeight = '300px';
 
-    protected static ?array $options = [
-        'plugins' => [
-            'legend' => [
-                'display' => true,
-            ],
-        ],
-    ];
+    protected function getOptions(): RawJs
+    {
+        return RawJs::make(<<<JS
+        {
+            plugins: {
+                datalabels: {
+                    display: function(context) {
+                        return context.dataset.data[context.dataIndex] > 0;
+                    },
+                    color: 'black',
+                    font: {
+                        weight: 'bold'
+                    }
+                },
+            },
+        }
+    JS
+        );
+    }
 
     protected function getData(): array
     {
