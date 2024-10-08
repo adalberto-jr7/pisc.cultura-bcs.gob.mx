@@ -42,7 +42,8 @@ class AdministradorPanelProvider extends PanelProvider
             ->colors([
                 'primary' => '#9F2241',
                 'secundary' => '#BE9655',
-                'tittle' => '#777777'
+                'title' => '#777777',
+                'link' => '#1d4ed8'
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
