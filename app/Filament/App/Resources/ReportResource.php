@@ -58,6 +58,7 @@ class ReportResource extends Resource
                         Forms\Components\Select::make('category_id')
                             ->label('Categoría')
                             ->placeholder(fn(Forms\Get $get): string => empty($get('category_id')) ? 'Primero Selecciona una categoría' : 'Selecciona una opción')
+                            ->required()
                             ->options(Category::query()->pluck('name', 'id')),
                         Forms\Components\Textarea::make('activity_goal')
                             ->placeholder('Escriba las metas de las actividades')
@@ -154,36 +155,44 @@ class ReportResource extends Resource
                                     ->schema([
                                         Forms\Components\TextInput::make('children_girls')
                                             ->label('Femenino')
+                                            ->nullable()
                                             ->placeholder('Escriba la cantidad de niñas'),
                                         Forms\Components\TextInput::make('children_boys')
                                             ->label('Masculino')
+                                            ->nullable()
                                             ->placeholder('Escriba la cantidad de niños'),
                                     ]),
                                 Forms\Components\Fieldset::make('Jóvenes')
                                     ->schema([
                                         Forms\Components\TextInput::make('youth_women')
                                             ->label('Femenino')
+                                            ->nullable()
                                             ->placeholder('Escriba la cantidad de jóvenes mujeres'),
                                         Forms\Components\TextInput::make('youth_men')
                                             ->label('Masculino')
+                                            ->nullable()
                                             ->placeholder('Escriba la cantidad de jóvenes hombres'),
                                     ]),
                                 Forms\Components\Fieldset::make('Adultos')
                                     ->schema([
                                         Forms\Components\TextInput::make('adult_women')
                                             ->label('Femenino')
+                                            ->nullable()
                                             ->placeholder('Escriba la cantidad de adultos mujeres'),
                                         Forms\Components\TextInput::make('adult_men')
                                             ->label('Masculino')
+                                            ->nullable()
                                             ->placeholder('Escriba la cantidad de adultos hombres'),
                                     ]),
                                 Forms\Components\Fieldset::make('Personas mayores')
                                     ->schema([
                                         Forms\Components\TextInput::make('senior_women')
                                             ->label('Femenino')
+                                            ->nullable()
                                             ->placeholder('Escriba la cantidad de personas mayores mujeres'),
                                         Forms\Components\TextInput::make('senior_men')
                                             ->label('Masculino')
+                                            ->nullable()
                                             ->placeholder('Escriba la cantidad de personas mayores hombres'),
                                     ])
 

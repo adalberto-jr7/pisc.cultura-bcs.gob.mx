@@ -11,8 +11,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -33,25 +32,25 @@ return new class extends Migration
             $table->string('locality');
             $table->enum('municipality', MunicipalityEnum::toArray());
             $table->integer('total');
-            $table->integer('women_total');
-            $table->integer('men_total');
-            $table->integer('children_girls');
-            $table->integer('children_boys');
-            $table->integer('youth_women');
-            $table->integer('youth_men');
-            $table->integer('adult_women');
-            $table->integer('adult_men');
-            $table->integer('senior_women');
-            $table->integer('senior_men');
-            $table->integer('social_women')->nullable();
-            $table->integer('social_childrens')->nullable();
-            $table->integer('social_seniors')->nullable();
-            $table->integer('social_indigenous')->nullable();
-            $table->integer('social_disabled')->nullable();
-            $table->integer('social_migrants')->nullable();
-            $table->integer('social_afrodescendants')->nullable();
-            $table->integer('social_incarcerated')->nullable();
-            $table->integer('social_lgbtttiq')->nullable();
+            $table->integer('women_total')->default(0)->nullable();
+            $table->integer('men_total')->default(0)->nullable();
+            $table->integer('children_girls')->default(0)->nullable();
+            $table->integer('children_boys')->default(0)->nullable();
+            $table->integer('youth_women')->default(0)->nullable();
+            $table->integer('youth_men')->default(0)->nullable();
+            $table->integer('adult_women')->default(0)->nullable();
+            $table->integer('adult_men')->default(0)->nullable();
+            $table->integer('senior_women')->default(0)->nullable();
+            $table->integer('senior_men')->default(0)->nullable();
+            $table->integer('social_women')->default(0)->nullable();
+            $table->integer('social_childrens')->default(0)->nullable();
+            $table->integer('social_seniors')->default(0)->nullable();
+            $table->integer('social_indigenous')->default(0)->nullable();
+            $table->integer('social_disabled')->default(0)->nullable();
+            $table->integer('social_migrants')->default(0)->nullable();
+            $table->integer('social_afrodescendants')->default(0)->nullable();
+            $table->integer('social_incarcerated')->default(0)->nullable();
+            $table->integer('social_lgbtttiq')->default(0)->nullable();
             $table->foreignIdFor(FinnancingSource::class)->nullable();
             $table->foreignIdFor(Area::class);
             $table->timestamps();
