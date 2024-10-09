@@ -21,6 +21,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Leandrocfe\FilamentApexCharts\FilamentApexChartsPlugin;
 
 class AdministradorPanelProvider extends PanelProvider
 {
@@ -35,6 +36,9 @@ class AdministradorPanelProvider extends PanelProvider
             ->sidebarCollapsibleOnDesktop()
             ->databaseNotifications()
             ->databaseNotificationsPolling('5s')
+            ->plugins([
+                FilamentApexChartsPlugin::make()
+            ])
             ->navigationGroups([
                 'Reportes',
                 'Valores'

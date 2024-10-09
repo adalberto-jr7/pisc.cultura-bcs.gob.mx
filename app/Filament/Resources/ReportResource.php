@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\Discipline;
 use App\Models\FinnancingSource;
 use App\Models\Report;
+use App\Models\Status;
 use Filament\Forms\Components\Actions\Action;
 use Filament\Notifications\Events\DatabaseNotificationsSent;
 use Filament\Notifications\Notification;
@@ -256,19 +257,19 @@ class ReportResource extends Resource
                     ->label('Área'),
                 TextColumn::make('user.name')
                     ->label('Usuario'),
-                TextColumn::make('status.name')
-                    ->label('Estado')
-                    ->badge()
-                    ->icon(fn(string $state): string => match ($state) {
-                        'Pendiente' => 'heroicon-m-arrow-path',
-                        'En curso' => 'heroicon-m-truck',
-                        'Concluido' => 'heroicon-m-check-badge',
+                Tables\Columns\SelectColumn::make('status.name')
+                    ->options(Status::query()->pluck('name', 'id'))
+                    ->getStateUsing(function (Report $report) {
+                        $report->status_id;
+                        $report->save();
                     })
-                    ->color(fn(string $state): string => match ($state) {
-                        'Pendiente' => 'info',
-                        'En curso' => 'warning',
-                        'Concluido' => 'success',
-                    }),
+                    ->rules(['required'])
+                    ->selectablePlaceholder(false)
+                    ->label('Estado')
+                ->afterStateUpdated(function ($state, Report $record) {
+                    $record->status_id = $state;
+                    $record->save();
+                }),
             ])
             ->filters([
                 SelectFilter::make('Área')
