@@ -17,8 +17,9 @@
             
             body .num404{
                 font-size: 135px;
+                font-weight: 350;
                 height: 120px;
-                color: #676A6C
+                color: #9F2241;
             }
             h3 {
                 color: #9F2241;
@@ -27,7 +28,17 @@
             h4 {
                 color: #BE9655;
             }
-            
+
+            span {
+                color: #17202a;
+                font-size: 16px;
+                
+            }
+            .link{
+                padding-top: 20px;
+                font-weight: bold;
+            }
+
         </style>
     </head>
     <body>
@@ -46,16 +57,22 @@
             <div class="flex justify-center">
                 <span>
                     @yield('text')
+                    <br>
+                    @yield('text2')
+                    <br>
+                    @yield('text3')
                 </span>
             </div>
 
-            <div class="flex justify-center pt-6">
-            <x-filament::icon-button
-            icon="heroicon-m-arrow-top-right-on-square"
-            href="javascript: history.go(-1)"
-            tag="a"
-            label="Atrás"
-        />
+            <div class="link"> 
+                <div class="flex justify-center underline">
+                <x-filament::icon-button
+                icon="heroicon-m-arrow-top-right-on-square"
+                href="javascript: history.go(-1)"
+                tag="a"
+                label="Atrás"
+                />
+                </div>
             </div>
 
 
