@@ -47,12 +47,17 @@
                 <span>
                     @yield('text')
                 </span>
-                
-                <!-- <h4>
-                    Lo sentimos pero la página que usted busca no fue encontrada con  
-                    <br> éxtito, porfavor intente comprobar la dirección URL a la que quiere dirigirse
-                    <br> o pulse el botón para redireccionarse a la página anterior. 
-                </h4> -->
             </div>
+
+            <div class="flex justify-center pt-6">
+            <x-filament::icon-button
+            icon="heroicon-m-arrow-top-right-on-square"
+            href="javascript: history.go(-1)"
+            tag="a"
+            label="Atrás"
+        />
+            </div>
+
+
     </body>
 </html>
