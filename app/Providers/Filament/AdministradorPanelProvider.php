@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use App\Filament\Pages\Auth\Login;
 use App\Filament\Resources\AdministradorResource\Widgets\ReporteEstadisticoActividades;
 use App\Filament\Widgets\ActividadesCulturalesChart;
+use App\Filament\Widgets\DisciplineChart;
 use App\Filament\Widgets\TotalReportsWidget;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -56,7 +57,8 @@ class AdministradorPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-                ActividadesCulturalesChart::class
+                ActividadesCulturalesChart::class,
+                DisciplineChart::class,
             ])
             ->middleware([
                 EncryptCookies::class,

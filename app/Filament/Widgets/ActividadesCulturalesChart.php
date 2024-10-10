@@ -8,7 +8,8 @@ use Leandrocfe\FilamentApexCharts\Widgets\ApexChartWidget;
 
 class ActividadesCulturalesChart extends ApexChartWidget
 {
-    protected int|string|array $columnSpan = 'full';
+    //protected int|string|array $columnSpan = 'full';
+
     protected static ?string $chartId = 'actividadesCulturalesChart';
 
     protected static ?string $heading = 'Actividades Culturales';

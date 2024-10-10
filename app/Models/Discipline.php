@@ -11,4 +11,9 @@ class Discipline extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
+    }
 }
