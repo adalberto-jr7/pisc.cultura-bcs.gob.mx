@@ -14,24 +14,27 @@
             body {
                 background-color: #EEEEEE
             }
-            
+
             body .num404{
                 font-size: 135px;
                 font-weight: 350;
                 height: 120px;
-                color: #9F2241;
+                color: #BE9655;
+                height: 80px;
             }
             h3 {
                 color: #9F2241;
             }
 
-            h4 {
-                color: #BE9655;
+            h2{
+                /* color: #BE9655; */
+                padding-bottom: 16px;
             }
 
             span {
                 color: #17202a;
                 font-size: 16px;
+                font-weight: 500;
                 
             }
             .link{
@@ -39,21 +42,36 @@
                 font-weight: bold;
             }
 
+            .subtitulo{
+                color: #9F2241;
+                font-size: 25px;
+            }
+
         </style>
     </head>
     <body>
+            <!-- 404 -->
             <div class="flex justify-center">
                     <h1 class="num404">
                     @yield('code')
                     </h1>
                 </div> 
 
+                <!-- mensaje -->
                 <div class="flex justify-center">
                     <h3>
                         @yield('message')
                     </h3>
                 </div>
+
+                <!-- subtitulo pagina no encontrada -->
+                <div class="flex justify-center">
+                    <h2 class="subtitulo">
+                        @yield('subtitle')
+                    </h2>
+                </div>
             
+                <!-- informacion -->
             <div class="flex justify-center">
                 <span>
                     @yield('text')
@@ -64,6 +82,7 @@
                 </span>
             </div>
 
+            <!-- boton para regresar pagina anterior -->
             <div class="link"> 
                 <div class="flex justify-center underline">
                 <x-filament::icon-button
@@ -74,7 +93,5 @@
                 />
                 </div>
             </div>
-
-
     </body>
 </html>
