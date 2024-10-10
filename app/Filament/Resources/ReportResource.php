@@ -10,6 +10,7 @@ use App\Models\ActivityType;
 use App\Models\Category;
 use App\Models\Discipline;
 use App\Models\FinnancingSource;
+use App\Models\Project;
 use App\Models\Report;
 use App\Models\Status;
 use Filament\Forms\Components\Actions\Action;
@@ -44,6 +45,7 @@ class ReportResource extends Resource
                     ->label('Proyecto')
                     ->columnSpanFull()
                     ->required()
+                    ->options(Project::query()->pluck('description', 'id'))
                     ->placeholder(fn(Forms\Get $get): string => empty($get('area_id')) ? 'Primero selecciona un proyecto' : 'Selecciona una opcion'),
                 Forms\Components\Hidden::make('area_id')
                     ->default(Auth::user()->area_id),
