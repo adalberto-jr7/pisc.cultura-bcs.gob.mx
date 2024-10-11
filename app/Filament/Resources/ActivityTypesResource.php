@@ -45,7 +45,7 @@ class ActivityTypesResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->modal(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -66,7 +66,7 @@ class ActivityTypesResource extends Resource
         return [
             'index' => Pages\ListActivityTypes::route('/'),
             'create' => Pages\CreateActivityTypes::route('/create'),
-            'edit' => Pages\EditActivityTypes::route('/{record}/edit'),
+            //'edit' => Pages\EditActivityTypes::route('/{record}/edit'),
             'view' => Pages\ViewActivityTypes::route('/{record}'),
         ];
     }

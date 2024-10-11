@@ -28,15 +28,15 @@ class AreaResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                ->label('Nombre')
-                ->placeholder('Ingrese el nombre del área'),
+                    ->label('Nombre')
+                    ->placeholder('Ingrese el nombre del área'),
                 Forms\Components\TextInput::make('code')
-                ->label('Código')
-                ->placeholder('Ingrese el código del área'),
+                    ->label('Código')
+                    ->placeholder('Ingrese el código del área'),
                 Forms\Components\TextArea::make('description')
-                ->label('Descripción')
-                ->columnSpan(2)
-                ->placeholder('Ingrese la descripción del área'),
+                    ->label('Descripción')
+                    ->columnSpan(2)
+                    ->placeholder('Ingrese la descripción del área'),
             ]);
     }
 
@@ -45,17 +45,17 @@ class AreaResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                ->label('Nombre'),
+                    ->label('Nombre'),
                 Tables\Columns\TextColumn::make('description')
-                ->label('Descripción'),
+                    ->label('Descripción'),
                 Tables\Columns\TextColumn::make('code')
-                ->label('Código'),
+                    ->label('Código'),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->modal(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -76,7 +76,7 @@ class AreaResource extends Resource
         return [
             'index' => Pages\ListAreas::route('/'),
             'create' => Pages\CreateArea::route('/create'),
-            'edit' => Pages\EditArea::route('/{record}/edit'),
+            //'edit' => Pages\EditArea::route('/{record}/edit'),
         ];
     }
 }
