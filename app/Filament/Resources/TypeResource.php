@@ -46,6 +46,7 @@ class TypeResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make()->modal(),
+                Tables\Actions\CreateAction::make()->modal(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -65,7 +66,7 @@ class TypeResource extends Resource
     {
         return [
             'index' => Pages\ListTypes::route('/'),
-            'create' => Pages\CreateType::route('/create'),
+            //'create' => Pages\CreateType::route('/create'),
             //'edit' => Pages\EditType::route('/{record}/edit'),
         ];
     }

@@ -56,6 +56,7 @@ class AreaResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make()->modal(),
+                Tables\Actions\CreateAction::make()->modal(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -75,7 +76,7 @@ class AreaResource extends Resource
     {
         return [
             'index' => Pages\ListAreas::route('/'),
-            'create' => Pages\CreateArea::route('/create'),
+            //'create' => Pages\CreateArea::route('/create'),
             //'edit' => Pages\EditArea::route('/{record}/edit'),
         ];
     }

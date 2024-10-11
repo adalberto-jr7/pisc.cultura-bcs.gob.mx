@@ -45,6 +45,7 @@ class DisciplineResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make()->modal(),
+                Tables\Actions\CreateAction::make()->modal(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -64,7 +65,7 @@ class DisciplineResource extends Resource
     {
         return [
             'index' => Pages\ListDisciplines::route('/'),
-            'create' => Pages\CreateDiscipline::route('/create'),
+            //'create' => Pages\CreateDiscipline::route('/create'),
             //'edit' => Pages\EditDiscipline::route('/{record}/edit'),
         ];
     }
