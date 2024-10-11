@@ -23,7 +23,7 @@ class Login extends BaseLogin
                 ->password()
                 ->revealable()
                 ->required(),
-                Checkbox::make('Recuerdame')
+                Checkbox::make('Recuérdame')
             ]);
     }
 }
