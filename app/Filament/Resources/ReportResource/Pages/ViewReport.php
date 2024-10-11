@@ -29,12 +29,12 @@ class ViewReport extends ViewRecord
                     return [
                         TextInput::make('title')
                             ->label('Título')
-                            ->placeholder('Escribe el título de la notificacion')
+                            ->placeholder('Escribe el título de la notificación')
                             ->default($record->project->description)
                             ->required(),
                         Textarea::make('description')
                             ->label('Descripción')
-                            ->placeholder('Escribe la descripción de la notificacion')
+                            ->placeholder('Escribe la descripción de la notificación')
                             ->required(),
                     ];
                 })

@@ -251,9 +251,12 @@ class ReportResource extends Resource
                 return $query->where('area_id', Auth::user()->area_id);
             })
             ->columns([
-                Tables\Columns\TextColumn::make('project.description'),
-                Tables\Columns\TextColumn::make('area.name'),
+                Tables\Columns\TextColumn::make('project.description')
+                ->label('Proyecto'),
+                Tables\Columns\TextColumn::make('area.name')
+                ->label('Área'),
                 Tables\Columns\TextColumn::make('status.name')
+                ->label('Estado')
                     ->badge()
                     ->icon(fn(string $state): string => match ($state) {
                         'Pendiente' => 'heroicon-m-arrow-path',
