@@ -56,7 +56,7 @@ class ProjectResource extends Resource
                 Tables\Columns\TextColumn::make('description')
                     ->label('Descripción'),
                 Tables\Columns\TextColumn::make('area.name')
-                    ->label('Area'),
+                    ->label('Área'),
                 Tables\Columns\TextColumn::make('initial_month')
                     ->label('Periodo')
                     ->formatStateUsing(function (Project $project) {
