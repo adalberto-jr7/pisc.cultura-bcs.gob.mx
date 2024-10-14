@@ -45,10 +45,10 @@ class DisciplineResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make()->modal(),
-                Tables\Actions\CreateAction::make()->modal(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
+                ])
+                ->bulkActions([
+                    Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\CreateAction::make()->modal(),
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
