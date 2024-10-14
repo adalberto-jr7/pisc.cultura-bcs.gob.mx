@@ -111,14 +111,15 @@ class ViewReport extends ViewRecord
                                         '2xl' => 6,
                                     ])
                                     ->schema([
+                                        // Informacion general
                                         Infolists\Components\TextEntry::make('activity_name')
                                             ->label('Actividad'),
                                         Infolists\Components\TextEntry::make('category.name')
-                                            ->label('Categoria'),
+                                            ->label('Categoría'),
                                         Infolists\Components\TextEntry::make('activity_goal')
                                             ->label('Meta de la actividad'),
                                         Infolists\Components\TextEntry::make('description')
-                                            ->label('Descripcion'),
+                                            ->label('Descripción'),
                                         Infolists\Components\TextEntry::make('activity_type.name')
                                             ->label('Tipo de actividad'),
                                         Infolists\Components\TextEntry::make('discipline.name')
@@ -136,7 +137,7 @@ class ViewReport extends ViewRecord
                                         Infolists\Components\TextEntry::make('locality')
                                             ->label('Localidad'),
                                     ]),
-                                Infolists\Components\Tabs\Tab::make('Poblacion atendida')
+                                Infolists\Components\Tabs\Tab::make('Población atendida')
                                     ->columns([
                                         'sm' => 2,
                                         'xl' => 3,
@@ -145,7 +146,7 @@ class ViewReport extends ViewRecord
                                     ->schema([
                                         // Poblacion atendida
                                         Infolists\Components\TextEntry::make('total')
-                                            ->label('Total de poblacion atendida'),
+                                            ->label('Total de población atendida'),
                                         Infolists\Components\TextEntry::make('women_total')
                                             ->label('Total de personas mujeres'),
                                         Infolists\Components\TextEntry::make('men_total')
@@ -155,9 +156,9 @@ class ViewReport extends ViewRecord
                                         Infolists\Components\TextEntry::make('children_boys')
                                             ->label('Total de niños'),
                                         Infolists\Components\TextEntry::make('youth_women')
-                                            ->label('Total de jovenes mujeres'),
+                                            ->label('Total de jóvenes mujeres'),
                                         Infolists\Components\TextEntry::make('youth_men')
-                                            ->label('Total de jovenes hombres'),
+                                            ->label('Total de jóvenes hombres'),
                                         Infolists\Components\TextEntry::make('adult_women')
                                             ->label('Total de adultos mujeres'),
                                         Infolists\Components\TextEntry::make('adult_men')
