@@ -14,6 +14,9 @@ class EditUser extends EditRecord
     {
         return [
             Actions\DeleteAction::make(),
+            Actions\Action::make('Salir')
+            ->icon('heroicon-o-chevron-left')
+            ->url(url()->previous())
         ];
     }
 }
