@@ -67,9 +67,7 @@ class ProjectResource extends Resource
                 //
             ])
             ->actions([
-                //Tables\Actions\EditAction::make(),
-                Tables\Actions\EditAction::make()->modal()
-                ->slideOver(),
+                Tables\Actions\EditAction::make(),
                 ])
                 ->bulkActions([
                     Tables\Actions\BulkActionGroup::make([
@@ -90,7 +88,7 @@ class ProjectResource extends Resource
         return [
             'index' => Pages\ListProjects::route('/'),
             'create' => Pages\CreateProject::route('/create'),
-            //'edit' => Pages\EditProject::route('/{record}/edit'),
+            'edit' => Pages\EditProject::route('/{record}/edit'),
         ];
     }
 }
