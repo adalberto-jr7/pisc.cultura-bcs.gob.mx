@@ -16,11 +16,10 @@ class Project extends Model
     protected $fillable = [
         'description',
         'code',
+        'year',
         'area_id',
-    ];
-    protected $casts = [
-        'initial_month' => MonthsEnum::class,
-        'last_month' => MonthsEnum::class,
+        'initial_month',
+        'last_month',
     ];
 
     public function area(): BelongsTo

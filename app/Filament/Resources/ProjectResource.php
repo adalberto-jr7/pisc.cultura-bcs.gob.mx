@@ -28,19 +28,48 @@ class ProjectResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextArea::make('description')
-                    ->columnSpan(2)
                     ->placeholder('Escriba la descripción de el proyecto')
                     ->label('Descripción'),
+                Forms\Components\TextInput::make('code')
+                    ->placeholder('Escriba el código del proyecto')
+                    ->label('Código'),
                 Forms\Components\Select::make('initial_month')
                     ->placeholder('Seleccione una opción')
                     ->label('Mes inicial')
-                    ->searchable()
-                    ->options(MonthsEnum::class),
+                    ->options([
+                        'enero' => 'Enero',
+                        'febrero' => 'Febrero',
+                        'marzo' => 'Marzo',
+                        'abril' => 'Abril',
+                        'mayo' => 'Mayo',
+                        'junio' => 'Junio',
+                        'julio' => 'Julio',
+                        'agosto' => 'Agosto',
+                        'septiembre' => 'Septiembre',
+                        'octubre' => 'Octubre',
+                        'noviembre' => 'Noviembre',
+                        'diciembre' => 'Diciembre',
+                    ]),
                 Forms\Components\Select::make('last_month')
                     ->placeholder('Seleccione una opción')
                     ->label('Mes final')
-                    ->searchable()
-                    ->options(MonthsEnum::class),
+                    ->options([
+                        'enero' => 'Enero',
+                        'febrero' => 'Febrero',
+                        'marzo' => 'Marzo',
+                        'abril' => 'Abril',
+                        'mayo' => 'Mayo',
+                        'junio' => 'Junio',
+                        'julio' => 'Julio',
+                        'agosto' => 'Agosto',
+                        'septiembre' => 'Septiembre',
+                        'octubre' => 'Octubre',
+                        'noviembre' => 'Noviembre',
+                        'diciembre' => 'Diciembre',
+                    ]),
+                Forms\Components\TextInput::make('year')
+                    ->placeholder('Escriba el año del proyecto')
+                    ->label('Año'),
                 Forms\Components\Select::make('area_id')
                     ->placeholder('Seleccione un área')
                     ->label('Área')
@@ -60,14 +89,16 @@ class ProjectResource extends Resource
                 Tables\Columns\TextColumn::make('initial_month')
                     ->label('Período')
                     ->formatStateUsing(function (Project $project) {
-                        return $project->initial_month->getLabel() . ' - ' . $project->last_month->getLabel() . ' del ' . $project->year;
+                        return $project->initial_month . ' - ' . $project->last_month . ' del ' . $project->year;
                     }),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                //Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->modal()
+                ->slideOver(),
                 ])
                 ->bulkActions([
                     Tables\Actions\BulkActionGroup::make([
