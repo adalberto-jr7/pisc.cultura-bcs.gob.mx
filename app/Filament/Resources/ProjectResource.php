@@ -58,7 +58,7 @@ class ProjectResource extends Resource
                 Tables\Columns\TextColumn::make('area.name')
                     ->label('Área'),
                 Tables\Columns\TextColumn::make('initial_month')
-                    ->label('Periodo')
+                    ->label('Período')
                     ->formatStateUsing(function (Project $project) {
                         return $project->initial_month->getLabel() . ' - ' . $project->last_month->getLabel() . ' del ' . $project->year;
                     }),
@@ -67,10 +67,12 @@ class ProjectResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
+                //Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->modal()
+                ->slideOver(),
+                ])
+                ->bulkActions([
+                    Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
@@ -88,7 +90,7 @@ class ProjectResource extends Resource
         return [
             'index' => Pages\ListProjects::route('/'),
             'create' => Pages\CreateProject::route('/create'),
-            'edit' => Pages\EditProject::route('/{record}/edit'),
+            //'edit' => Pages\EditProject::route('/{record}/edit'),
         ];
     }
 }
