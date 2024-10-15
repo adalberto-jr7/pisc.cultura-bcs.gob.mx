@@ -44,7 +44,6 @@ class Activity extends Model
         'social_incarcerated',
         'social_lgbtttiq',
         'finnancing_source_id',
-        'area_id'
     ];
 
     public function category(): BelongsTo
@@ -71,10 +70,5 @@ class Activity extends Model
     {
         return $this->belongsToMany(Report::class, 'report_activity')
             ->withTimestamps();
-    }
-
-    public function activity_type(): BelongsTo
-    {
-        return $this->belongsTo(ActivityType::class);
     }
 }

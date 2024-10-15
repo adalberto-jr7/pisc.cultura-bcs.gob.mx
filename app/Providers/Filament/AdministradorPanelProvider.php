@@ -29,7 +29,6 @@ class AdministradorPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->brandName('Proyectos Instituto Sudcaliforniano de Cultura')
             ->default()
             ->id('administrador')
             ->path('administrador')
