@@ -17,8 +17,8 @@ return new class extends Migration
             $table->text('description');
             $table->string('code');
             $table->foreignId('area_id')->constrained('areas')->onDelete('cascade');
-            $table->enum('initial_month', MonthsEnum::toArray());
-            $table->enum('last_month', MonthsEnum::toArray());
+            $table->enum('initial_month', ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']);
+            $table->enum('last_month', ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']);
             $table->year('year');
             $table->timestamps();
         });

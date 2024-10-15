@@ -26,8 +26,8 @@ return new class extends Migration {
             $table->foreignIdFor(ActivityType::class);
             $table->foreignIdFor(Discipline::class);
             $table->string('author_name');
-            $table->date('initial_date');
-            $table->date('end_date');
+            $table->date('initial_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->string('name_space_held');
             $table->string('locality');
             $table->enum('municipality', MunicipalityEnum::toArray());
@@ -52,7 +52,6 @@ return new class extends Migration {
             $table->integer('social_incarcerated')->default(0)->nullable();
             $table->integer('social_lgbtttiq')->default(0)->nullable();
             $table->foreignIdFor(FinnancingSource::class)->nullable();
-            $table->foreignIdFor(Area::class);
             $table->timestamps();
         });
     }
