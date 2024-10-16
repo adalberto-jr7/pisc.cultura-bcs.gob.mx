@@ -28,6 +28,7 @@ class DisciplineResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                ->required()
                 ->name('Nombre')
                 ->placeholder('Ingrese el nombre de la disciplina')
             ]);
