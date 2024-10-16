@@ -14,6 +14,9 @@ use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\HtmlString;
 use Filament\Infolists\Components\Fieldset;
+//
+use Filament\Actions;
+
 
 
 class ViewReport extends ViewRecord
@@ -22,6 +25,15 @@ class ViewReport extends ViewRecord
 
     public function getHeaderActions(): array
     {
+
+        return [
+            Actions\DeleteAction::make(),
+            Actions\Action::make('Salir')
+            ->icon('heroicon-o-chevron-left')
+            ->url(url()->previous())
+        ];
+
+
         return [
             Action::make('Notificar')
                 ->icon('heroicon-o-exclamation-triangle')
