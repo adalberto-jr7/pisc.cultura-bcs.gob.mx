@@ -28,6 +28,7 @@ class CategoryResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                ->required()
                 ->label('Nombre')
                 ->placeholder('Ingrese el nombre de la categoría'),
             ]);

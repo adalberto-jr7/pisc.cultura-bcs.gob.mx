@@ -28,12 +28,15 @@ class AreaResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                ->required()
                     ->label('Nombre')
                     ->placeholder('Ingrese el nombre del área'),
                 Forms\Components\TextInput::make('code')
+                ->required()
                     ->label('Código')
                     ->placeholder('Ingrese el código del área'),
                 Forms\Components\TextArea::make('description')
+                ->required()
                     ->label('Descripción')
                     ->columnSpan(2)
                     ->placeholder('Ingrese la descripción del área'),
