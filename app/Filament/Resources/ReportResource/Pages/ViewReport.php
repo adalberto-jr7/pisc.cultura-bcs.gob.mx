@@ -25,15 +25,6 @@ class ViewReport extends ViewRecord
 
     public function getHeaderActions(): array
     {
-
-        return [
-            Actions\DeleteAction::make(),
-            Actions\Action::make('Salir')
-            ->icon('heroicon-o-chevron-left')
-            ->url(url()->previous())
-        ];
-
-
         return [
             Action::make('Notificar')
                 ->icon('heroicon-o-exclamation-triangle')
