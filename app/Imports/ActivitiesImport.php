@@ -8,7 +8,6 @@ use App\Models\Category;
 use App\Models\Discipline;
 use App\Models\FinnancingSource;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithMappedCells;
 use Maatwebsite\Excel\Concerns\WithStartRow;
@@ -78,8 +77,8 @@ class ActivitiesImport implements WithMappedCells, ToModel, WithStartRow
             'activity_type_id' => $activity_type->id,
             'discipline_id' => $discipline->id,
             'author_name' => $row['author_name'],
-            //'initial_date' => $row['initial_date'],
-            //'end_date' => $row['end_date'],
+            'initial_date' => $row['initial_date'],
+            'end_date' => $row['end_date'],
             'name_space_held' => $row['name_space_held'],
             'locality' => $row['locality'],
             'municipality' => $row['municipality'],
