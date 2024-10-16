@@ -20,6 +20,7 @@ class Project extends Model
         'area_id',
         'initial_month',
         'last_month',
+        'completion_month'
     ];
 
     public function area(): BelongsTo
