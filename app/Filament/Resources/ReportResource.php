@@ -55,9 +55,23 @@ class ReportResource extends Resource
                 return [$area => $projects->pluck('description', 'id')];
               });
           })
-          ->placeholder(fn(Forms\Get $get): string => empty($get('area_id')) ? 'Primero selecciona un proyecto' : 'Selecciona una opcion'),
-        Forms\Components\Hidden::make('area_id')
-          ->default(Auth::user()->area_id),
+          ->placeholder(fn(Forms\Get $get): string => empty($get('area_id')) ? 'Primero selecciona un proyecto' : 'Selecciona una opcion')
+          ->reactive()
+          ->afterStateUpdated(function (callable $set, $state) {
+            $project = Project::find($state);
+            $set('area_id', $project ? $project->area->id : null);
+          }),
+
+        Forms\Components\Select::make('area_id')
+          ->columnSpanFull()
+          ->required()
+          ->options(function (callable $get) {
+            $projectId = $get('project_id');
+            $project = Project::find($projectId);
+            return $project ? [$project->area->id => $project->area->name] : [];
+          })
+          ->label('Area')
+          ->placeholder('Seleccione un area'),
         Forms\Components\Hidden::make('user_id')
           ->default(Auth::user()->id),
         Forms\Components\FileUpload::make('excel_file')
