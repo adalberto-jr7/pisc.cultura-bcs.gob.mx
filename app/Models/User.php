@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable implements FilamentUser
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
 
     public function canAccessPanel(\Filament\Panel $panel): bool
     {
@@ -23,8 +24,8 @@ class User extends Authenticatable implements FilamentUser
         return true;
     }
 
-    const ADMIN = "1";
-    const USER = "0";
+    public const ADMIN = "1";
+    public const USER = "0";
 
     protected $fillable = [
         'name',

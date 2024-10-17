@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources;
 
-use App\Enums\MonthsEnum;
 use App\Filament\Resources\ProjectResource\Pages;
 use App\Models\Area;
 use App\Models\Project;
@@ -96,6 +95,7 @@ class ProjectResource extends Resource
                     ->required()
                     ->placeholder('Seleccione un área')
                     ->label('Área')
+                    ->columnSpanFull()
                     ->options(Area::query()->pluck('name', 'id'))
             ])
             ->columns(2);
