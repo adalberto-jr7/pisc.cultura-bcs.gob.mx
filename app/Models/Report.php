@@ -16,7 +16,8 @@ class Report extends Model
     protected $fillable = [
         'area_id',
         'project_id',
-        'user_id'
+        'user_id',
+        'status_id'
     ];
 
     public function project(): BelongsTo
