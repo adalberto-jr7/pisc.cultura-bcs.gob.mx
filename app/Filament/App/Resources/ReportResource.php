@@ -4,8 +4,6 @@ namespace App\Filament\App\Resources;
 
 use App\Enums\MunicipalityEnum;
 use App\Filament\App\Resources\ReportResource\Pages;
-use App\Filament\App\Resources\ReportResource\RelationManagers;
-use App\Imports\ActivitiesImport;
 use App\Models\ActivityType;
 use App\Models\Category;
 use App\Models\Discipline;
@@ -20,7 +18,6 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Maatwebsite\Excel\Excel;
 
 class ReportResource extends Resource
 {
@@ -44,70 +41,13 @@ class ReportResource extends Resource
                     ->default(Auth::user()->area_id),
                 Forms\Components\Hidden::make('user_id')
                     ->default(Auth::user()->id),
-                Forms\Components\FileUpload::make('excel_file')
-                    ->label('Archivo excel')
-                    ->placeholder('Selecciona un archivo')
-                    ->uploadingMessage('Subiendo Actividades...')
-                    ->required()
-                    ->reactive()
-                    ->columnSpanFull()
-                    ->afterStateUpdated(function ($state, callable $set) {
-                        if ($state) {
-                            $rows = \Maatwebsite\Excel\Facades\Excel::toArray(new ActivitiesImport, $state);
-                            $repeaterData = [];
-
-                            foreach ($rows[0] as $row) {
-                                $category = Category::where('name', $row[1])->firstOrFail();
-                                $activityType = ActivityType::where('name', $row[4])->firstOrFail();
-                                $discipline = Discipline::where('name', $row[5])->firstOrFail();
-                                $finnaning_source = FinnancingSource::where('name', $row[31])->firstOrFail();
-
-                                $repeaterData[] = [
-                                    'activity_name' => $row[0] ?? null,
-                                    'category_id' => $category->id,
-                                    'activity_goal' => $row[2] ?? null,
-                                    'description' => $row[3] ?? null,
-                                    'activity_type_id' => $activityType->id,
-                                    'discipline_id' => $discipline->id,
-                                    'author_name' => $row[6] ?? null,
-                                    'initial_date' => null,
-                                    'end_date' => null,
-                                    'name_space_held' => $row[8] ?? null,
-                                    'locality' => $row[9] ?? null,
-                                    'municipality' => $row[10] ?? null,
-                                    'total' => $row[11] ?? null,
-                                    'women_total' => $row[12] ?? null,
-                                    'men_total' => $row[13] ?? null,
-                                    'children_girls' => $row[14] ?? null,
-                                    'children_boys' => $row[15] ?? null,
-                                    'youth_women' => $row[16] ?? null,
-                                    'youth_men' => $row[17] ?? null,
-                                    'adult_women' => $row[18] ?? null,
-                                    'adult_men' => $row[19] ?? null,
-                                    'senior_women' => $row[20] ?? null,
-                                    'senior_men' => $row[21] ?? null,
-                                    'social_women' => $row[22] ?? null,
-                                    'social_childrens' => $row[23] ?? null,
-                                    'social_seniors' => $row[24] ?? null,
-                                    'social_indigenous' => $row[25] ?? null,
-                                    'social_disabled' => $row[26] ?? null,
-                                    'social_migrants' => $row[27] ?? null,
-                                    'social_afrodescendants' => $row[28] ?? null,
-                                    'social_incarcerated' => $row[29] ?? null,
-                                    'social_lgbtttiq' => $row[30] ?? null,
-                                    'finnancing_source_id' => $finnaning_source->idj
-                                ];
-                            }
-                            $set('activities', $repeaterData);
-                        }
-                    }),
-
                 Forms\Components\Repeater::make('activities')
                     ->relationship('activities')
                     ->label('Actividades')
                     ->required()
                     ->collapsible()
                     ->columnSpanFull()
+                    ->itemLabel(fn(array $state): ?string => $state['activity_name'] ?? null)
                     ->addActionLabel('Agrega otra actividad')
                     ->cloneable()
                     ->schema([
@@ -170,7 +110,9 @@ class ReportResource extends Resource
                             ->placeholder(function (callable $get) {
                                 if ($get('municipality') !== null) {
                                     return "Selecciona una localidad de " . $get('municipality');
-                                } else return "Primero seleccione un municipio";
+                                } else {
+                                    return "Primero seleccione un municipio";
+                                }
                             })
                             ->required()
                             ->reactive()
