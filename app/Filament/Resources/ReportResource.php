@@ -77,7 +77,7 @@ class ReportResource extends Resource
         Forms\Components\FileUpload::make('excel_file')
           ->label('Archivo de Excel')
           ->uploadingMessage('Subiendo actividades...')
-          ->required()
+          //->required()
           ->reactive()
           ->columnSpanFull()
           ->afterStateUpdated(function ($state, callable $set) {

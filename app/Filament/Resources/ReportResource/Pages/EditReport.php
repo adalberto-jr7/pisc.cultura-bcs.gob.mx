@@ -10,13 +10,14 @@ class EditReport extends EditRecord
 {
     protected static string $resource = ReportResource::class;
 
+    // admin
     protected function getHeaderActions(): array
     {
         return [
             Actions\DeleteAction::make(),
             Actions\Action::make('Salir')
             ->icon('heroicon-o-chevron-left')
-            ->url(url()->previous())
+            ->url(route('filament.administrador.resources.reports.index'))
         ];
     }
 }

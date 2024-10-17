@@ -16,7 +16,8 @@ class EditReport extends EditRecord
             Actions\DeleteAction::make(),
             Actions\Action::make('Salir')
             ->icon('heroicon-o-chevron-left')
-            ->url(url()->previous())
+            ->url(route('filament.app.resources.reports.index'))
+
         ];
     }
 }
