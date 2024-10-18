@@ -8,6 +8,7 @@ use Filament\Resources\Pages\CreateRecord;
 
 class CreateReport extends CreateRecord
 {
+    // admin
     protected static string $resource = ReportResource::class;
 
     protected function getHeaderActions(): array
@@ -15,7 +16,7 @@ class CreateReport extends CreateRecord
         return [
             Actions\Action::make('Salir')
                 ->icon('heroicon-o-chevron-left')
-                ->url(url()->previous())
+                ->url(route('filament.administrador.resources.reports.index'))
         ];
     }
 }
