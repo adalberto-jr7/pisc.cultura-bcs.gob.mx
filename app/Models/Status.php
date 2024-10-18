@@ -12,4 +12,9 @@ class Status extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function reports()
+    {
+        return $this->belongsTo(Report::class);
+    }
 }
