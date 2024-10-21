@@ -46,8 +46,8 @@
                             <label for="password" class="col-md-3 col-form-label text-md-end">Contraseña</label>
 
                             <div class="col-md-6 w-100 input-group">
-                                <input id="password" type="password" placeholder="Ingresa tu Contraseña" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"><span class="input-group-text" id="togglePassword"><i class="bi-eye-fill bi-black" id="eyeIcon" style="color: #9F2241"></i></span>
-                                
+                                <input id="password" type="password" placeholder="Ingresa tu Contraseña" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"><span class="input-group-text" id="togglePassword"><i class="bi-eye-slash-fill bi-black" id="eyeIcon" style="color: #9F2241"></i></span>
+
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -92,14 +92,14 @@
         // Toggle the type attribute
         const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
         password.setAttribute('type', type);
-        
+
         // Cambiar el ícono según el tipo de input
         if (type === 'password') {
-            eyeIcon.classList.remove('bi-eye-slash-fill');
-            eyeIcon.classList.add('bi-eye-fill');
-        } else {
             eyeIcon.classList.remove('bi-eye-fill');
             eyeIcon.classList.add('bi-eye-slash-fill');
+        } else {
+            eyeIcon.classList.remove('bi-eye-slash-fill');
+            eyeIcon.classList.add('bi-eye-fill');
         }
     });
 </script>
