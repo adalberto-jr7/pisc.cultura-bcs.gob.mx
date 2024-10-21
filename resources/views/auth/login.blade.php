@@ -46,7 +46,7 @@
                             <label for="password" class="col-md-3 col-form-label text-md-end">Contraseña</label>
 
                             <div class="col-md-6 w-100 input-group">
-                                <input id="password" type="password" placeholder="Ingresa tu Contraseña" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"><span class="input-group-text" id="togglePassword"><i class="bi bi-eye-slash bi-black" id="eyeIcon" style="color: #9F2241"></i></span>
+                                <input id="password" type="password" placeholder="Ingresa tu Contraseña" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"><span class="input-group-text" id="togglePassword"><i class="bi-eye bi-black" id="eyeIcon" style="color: #9F2241"></i></span>
                                 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -95,11 +95,11 @@
         
         // Cambiar el ícono según el tipo de input
         if (type === 'password') {
-            eyeIcon.classList.remove('bi-eye');
-            eyeIcon.classList.add('bi-eye-slash');
-        } else {
             eyeIcon.classList.remove('bi-eye-slash');
             eyeIcon.classList.add('bi-eye');
+        } else {
+            eyeIcon.classList.remove('bi-eye');
+            eyeIcon.classList.add('bi-eye-slash');
         }
     });
 </script>
