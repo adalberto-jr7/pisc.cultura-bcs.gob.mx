@@ -6,14 +6,16 @@
 
     <div class="row justify-content-center mt-0">
 
-        <div class="d-flex justify-content-center mt-5">
-            <div class="row">
-                <div class="col-10">
-                    <img src="{{ asset('assets/logo-1.jpg') }}" @style(['width: 449px'])>
+        <div class="d-flex justify-content-end mt-5 ps-5">
+            <div class="container d-flex justify-content-end ps-5">
+            <div class="row ps-5 d-flex" @style(['width: 700px'])>
+                <div class="col-7">
+                    <img src="{{ asset('assets/logogbcs-texto.jpg') }}" @style(['width: 700px'])>
                 </div>
-                <div class="col-2 mb-2">
-                    <img  src="{{ asset('assets/ISC30N24.jpg') }}" @style(['width: 78px'])>
+                <div class="col-5 mb-4">
+                    <img  src="{{ asset('assets/ISC.png') }}" @style(['width: 78px'])>
                 </div>
+            </div>
             </div>
         </div>
 
