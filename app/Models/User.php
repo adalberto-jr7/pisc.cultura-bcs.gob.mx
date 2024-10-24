@@ -4,22 +4,38 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    public function canAccessPanel(\Filament\Panel $panel): bool
+    {
+        if ($panel->getId() === 'administrador') {
+            return $this->isAdmin();
+        }
+
+        return true;
+    }
+
+    public const ADMIN = "1";
+    public const USER = "0";
+
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
+        'role',
+        'number_phone',
+        'position',
+        'area_id',
     ];
 
     /**
@@ -40,8 +56,26 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function role(): string
+    {
+        return (string) $this->role;
+    }
+    public static function isAdmin(): bool
+    {
+        $user = Auth::user();
+        return $user->role() === self::ADMIN;
+    }
+    public function isUser(): bool
+    {
+        return $this->role() === self::USER;
+    }
+
+    public function area(): BelongsTo
+    {
+        return $this->belongsTo(Area::class);
     }
 }
