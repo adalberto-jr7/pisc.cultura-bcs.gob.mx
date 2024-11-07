@@ -25,7 +25,7 @@ class ProjectResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextArea::make('description')
+                Forms\Components\Textarea::make('description')
                     ->required()
                     ->placeholder('Escriba la descripción de el proyecto')
                     ->label('Descripción'),

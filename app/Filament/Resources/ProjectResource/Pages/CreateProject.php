@@ -15,7 +15,7 @@ class CreateProject extends CreateRecord
         return [
             Actions\Action::make('Salir')
                 ->icon('heroicon-o-chevron-left')
-                ->url(route('filament.administrador.resources.projects.edit'))
+                ->url(route('filament.administrador.resources.projects.index'))
         ];
     }
 }
