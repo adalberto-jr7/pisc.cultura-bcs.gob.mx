@@ -5,7 +5,6 @@ namespace App\Filament\Resources;
 use App\Enums\MunicipalityEnum;
 use App\Exports\ReportsExport;
 use App\Filament\Resources\ReportResource\Pages;
-use App\Filament\Resources\ReportResource\RelationManagers;
 use App\Imports\ActivitiesImport;
 use App\Models\ActivityType;
 use App\Models\Category;
@@ -25,7 +24,9 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\HtmlString;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -55,7 +56,7 @@ class ReportResource extends Resource
                                 return [$area => $projects->pluck('description', 'id')];
                             });
                     })
-                    ->placeholder(fn (Forms\Get $get): string => empty($get('area_id')) ? 'Primero selecciona un proyecto' : 'Selecciona una opcion')
+                    ->placeholder(fn(Forms\Get $get): string => empty($get('area_id')) ? 'Primero selecciona un proyecto' : 'Selecciona una opcion')
                     ->reactive()
                     ->afterStateUpdated(function (callable $set, $state) {
                         $project = Project::find($state);
@@ -86,9 +87,10 @@ class ReportResource extends Resource
                             $repeaterData = [];
 
                             foreach ($rows[0] as $row) {
-                                $category = Category::where('name', $row[1])->firstOrFail();
-                                $activityType = ActivityType::where('name', $row[4])->firstOrFail();
-                                $discipline = Discipline::where('name', $row[5])->firstOrFail();
+                                $category = DB::table('categories')->where('name', $row[1])->select('id')->firstOrFail();
+                                $activityType = DB::table('activity_types')->where('name', $row[4])->select('id')->firstOrFail();
+                                $discipline = DB::table('disciplines')->where('name', $row[5])->select('id')->firstOrFail();
+                                $finnancing_source = DB::table('finnancing_sources')->where('name', $row[31])->select('id')->firstOrFail();
 
                                 $inidialDate = $row[7] ?? null;
                                 $endDate = $row[8] ?? null;
@@ -126,7 +128,7 @@ class ReportResource extends Resource
                                     'social_afrodescendants' => $row[28] ?? null,
                                     'social_incarcerated' => $row[29] ?? null,
                                     'social_lgbtttiq' => $row[30] ?? null,
-                                    'finnancing_source_id' => $row[31] ?? null,
+                                    'finnancing_source_id' => $finnancing_source->id,
                                 ];
                             }
                             $set('activities', $repeaterData);
@@ -139,6 +141,7 @@ class ReportResource extends Resource
                     ->required()
                     ->collapsible()
                     ->columnSpanFull()
+                    ->itemLabel(fn(array $state): ?string => $state['activity_name'] ?? null)
                     ->addActionLabel('Agrega otra actividad')
                     ->cloneable()
                     ->schema([
@@ -148,8 +151,8 @@ class ReportResource extends Resource
                             ->label('Nombre de la actividad'),
                         Forms\Components\Select::make('category_id')
                             ->label('Categoría')
-                            ->placeholder(fn (Forms\Get $get): string => empty($get('category_id')) ? 'Primero Selecciona una categoría' : 'Selecciona una opción')
-                            ->options(Category::query()->pluck('name', 'id')),
+                            ->placeholder(fn(Forms\Get $get): string => empty($get('category_id')) ? 'Primero Selecciona una categoria' : 'Selecciona una opción')
+                            ->options(Category::all()->pluck('name', 'id')),
                         Forms\Components\Textarea::make('activity_goal')
                             ->placeholder('Escriba las metas de las actividades')
                             ->required()
@@ -161,12 +164,12 @@ class ReportResource extends Resource
                         Forms\Components\Select::make('activity_type_id')
                             ->label('Tipo de actividad')
                             ->required()
-                            ->placeholder(fn (Forms\Get $get): string => empty($get('activity_type_id')) ? 'Primero Selecciona un tipo de actividad' : 'Selecciona una opción')
+                            ->placeholder(fn(Forms\Get $get): string => empty($get('activity_type_id')) ? 'Primero Selecciona un tipo de actividad' : 'Selecciona una opción')
                             ->options(ActivityType::query()->pluck('name', 'id')),
                         Forms\Components\Select::make('discipline_id')
                             ->label('Tipo de disciplina')
                             ->required()
-                            ->placeholder(fn (Forms\Get $get): string => empty($get('discipline_id')) ? 'Primero Selecciona un tipo de disciplina' : 'Selecciona una opción')
+                            ->placeholder(fn(Forms\Get $get): string => empty($get('discipline_id')) ? 'Primero Selecciona un tipo de disciplina' : 'Selecciona una opción')
                             ->options(Discipline::query()->pluck('name', 'id')),
                         Forms\Components\TextInput::make('author_name')
                             ->label('Nombre del autor')
@@ -318,12 +321,12 @@ class ReportResource extends Resource
                         Forms\Components\Select::make('finnancing_source_id')
                             ->label('Fuente de financiamiento')
                             ->columnSpanFull()
-                            ->placeholder(fn (Forms\Get $get): string => empty($get('finnancing_source_id')) ? 'Primero Selecciona un tipo de financiamiento' : 'Selecciona una opción')
+                            ->placeholder(fn(Forms\Get $get): string => empty($get('finnancing_source_id')) ? 'Primero Selecciona un tipo de financiamiento' : 'Selecciona una opción')
                             ->options(FinnancingSource::query()->pluck('name', 'id')),
 
                         Forms\Components\Hidden::make('area_id')
                             ->default((int)Auth::user()->area_id),
-                    ])->columns(2)->deleteAction(fn (Action $action) => $action->requiresConfirmation()),
+                    ])->columns(2)->deleteAction(fn(Action $action) => $action->requiresConfirmation()),
             ]);
     }
 
@@ -355,6 +358,21 @@ class ReportResource extends Resource
                     }),
             ])
             ->filters([
+                SelectFilter::make('quarter')
+                    ->label('Filter By Quarter')
+                    ->options([
+                        1 => 'T1 (Enero - Marzo)',
+                        2 => 'T2 (Abril - Junio)',
+                        3 => 'T3 (Julio - Septiembre)',
+                        4 => 'T4 (Octubre - Diciembre)',
+                    ])
+                    ->query(function (Builder $query, $data) {
+                        if ($data['value']) {
+                            $query->whereHas('project', function ($projectQuery) use ($data) {
+                                $projectQuery->byQuarter($data['value']);
+                            });
+                        }
+                    }),
                 SelectFilter::make('Área')
                     ->relationship('area', 'name'),
                 SelectFilter::make('Proyecto')
@@ -369,7 +387,7 @@ class ReportResource extends Resource
                     Tables\Actions\Action::make('Exportar')
                         ->label('Exportar')
                         ->icon('heroicon-o-document-arrow-down')
-                        ->action(fn () => \Maatwebsite\Excel\Facades\Excel::download(new ReportsExport(), 'reports.xlsx')),
+                        ->action(fn() => \Maatwebsite\Excel\Facades\Excel::download(new ReportsExport(), 'reports.xlsx')),
                     Tables\Actions\Action::make('Notificar')
                         ->icon('heroicon-o-exclamation-triangle')
                         ->form(function ($record) {
