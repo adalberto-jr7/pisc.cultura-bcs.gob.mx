@@ -35,7 +35,7 @@ class AreaResource extends Resource
                 ->required()
                     ->label('Código')
                     ->placeholder('Ingrese el código del área'),
-                Forms\Components\TextArea::make('description')
+                Forms\Components\Textarea::make('description')
                 ->required()
                     ->label('Descripción')
                     ->columnSpan(2)

@@ -68,7 +68,7 @@ class ActivityTypesResource extends Resource
             'index' => Pages\ListActivityTypes::route('/'),
             //'create' => Pages\CreateActivityTypes::route('/create'),
             //'edit' => Pages\EditActivityTypes::route('/{record}/edit'),
-            'view' => Pages\ViewActivityTypes::route('/{record}'),
+            //'view' => Pages\ViewActivityTypes::route('/{record}'),
         ];
     }
 }
