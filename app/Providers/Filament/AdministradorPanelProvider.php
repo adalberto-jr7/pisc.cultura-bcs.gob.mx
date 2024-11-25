@@ -70,7 +70,6 @@ class AdministradorPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
-            ->viteTheme('resources/css/filament/administrador/theme.css')
             ->authMiddleware([
                 Authenticate::class,
             ]);
