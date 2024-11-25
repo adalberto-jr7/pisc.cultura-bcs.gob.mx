@@ -15,7 +15,7 @@ class CreateUser extends CreateRecord
         return [
             Actions\Action::make('Salir')
                 ->icon('heroicon-o-chevron-left')
-                ->url(url()->previous())
+                ->url(route('filament.administrador.resources.users.index'))
         ];
     }
 }
