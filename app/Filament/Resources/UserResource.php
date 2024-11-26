@@ -13,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Hash;
 
 class UserResource extends Resource
 {
@@ -27,11 +28,9 @@ class UserResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->required()
                     ->label('Nombre Completo')
                     ->placeholder('Ingresa el nombre completo'),
                 Forms\Components\TextInput::make('username')
-                    ->required()
                     ->label('Usuario')
                     ->placeholder('Ingresa el nombre de usuario'),
                 Forms\Components\TextInput::make('email')
@@ -44,18 +43,18 @@ class UserResource extends Resource
                     ->password()
                     ->revealable()
                     ->label('Contraseña')
+                    ->dehydrateStateUsing(fn ($state) => Hash::make($state))
+                    ->dehydrated(fn ($state) => filled($state))
+                    ->required(fn (string $context): bool => $context === 'create')
                     ->placeholder('Ingrese la contraseña'),
                 Forms\Components\TextInput::make('number_phone')
-                    ->required()
                     ->label('Número de teléfono')
                     ->tel()
                     ->placeholder('Ingresa el número de teléfono'),
                 Forms\Components\TextInput::make('position')
-                    ->required()
                     ->label('Posición')
                     ->placeholder('Ingrese la posición'),
                 Forms\Components\Select::make('area_id')
-                    ->required()
                     ->label('Área')
                     ->relationship('area', 'name')
                     ->createOptionForm([
